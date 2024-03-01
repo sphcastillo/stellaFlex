@@ -1,30 +1,26 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import Logo from '@/images/whiteColorLogo.png';
+import Logo from '@/images/roundLogo.png';
 
 function Header() {
   return (
-    <header className="flex justify-between p-5 mx-auto max-w-7xl bg-[#FFBD39]">
-    <div className="flex items-center space-x-5">
+    <header className="flex items-center justify-between space-x-2 font-bold px-10 py-5">
+    <div className="flex items-center space-x-2">
         <Link href="/">
             <Image 
-                className="object-contain cursor-pointer" 
                 src={Logo}
-                width={125}
-                height={30}
-                alt="Sophiastic Living logo" 
+                width={50}
+                height={50}
+                alt="logo" 
             />
         </Link>
-        <div className="hidden md:inline-flex items-center space-x-5 text-[#FFEED0]">
-            <h3>About</h3>
-            <h3>Contact</h3>
-            <h3 className="text-white bg-[#090088] px-4 py-1 rounded-full">Follow</h3>
-        </div>
+        <h1>Sophiastic Living</h1>
     </div>
 
-    <div className="flex items-center space-x-5 text-[#FFEED0]">
-        <h3>Sign In</h3>
-        <h3 className="px-4 py-2 rounded-full text-white bg-[#F23557]">Get Started</h3>
+    <div>
+        <Link href='/' className="px-5 py-3 text-sm md:text-base bg-gray-900 text-[#F7AB0A] flex items-center rounded-full text-center">
+            Sign up to our newsletter
+        </Link>
     </div>
 </header>
   )

@@ -8,13 +8,7 @@ export default defineType({
     defineField({
       name: 'title',
       title: 'Title',
-      description: 'Titles should be catchy, descriptive, and not too long',
       type: 'string',
-    }),
-    defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'text',
     }),
     defineField({
       name: 'slug',
@@ -38,6 +32,13 @@ export default defineType({
       options: {
         hotspot: true,
       },
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative Text',
+        }
+      ]
     }),
     defineField({
       name: 'categories',
