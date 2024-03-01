@@ -8,23 +8,23 @@ function Header() {
     <div className="flex items-center space-x-5">
         <Link href="/">
             <Image 
-                className="w-44 object-contain cursor-pointer" 
+                className="object-contain cursor-pointer" 
                 src={Logo}
-                width={175}
-                height={50}
+                width={125}
+                height={30}
                 alt="Sophiastic Living logo" 
             />
         </Link>
         <div className="hidden md:inline-flex items-center space-x-5 text-[#FFEED0]">
             <h3>About</h3>
             <h3>Contact</h3>
-            <h3 className="text-white bg-[#118DF0] px-4 py-1 rounded-full">Follow</h3>
+            <h3 className="text-white bg-[#090088] px-4 py-1 rounded-full">Follow</h3>
         </div>
     </div>
 
     <div className="flex items-center space-x-5 text-[#FFEED0]">
         <h3>Sign In</h3>
-        <h3 className="px-4 py-1 rounded-full bg-[#090088] text-white">Get Started</h3>
+        <h3 className="px-4 py-2 rounded-full text-white bg-[#F23557]">Get Started</h3>
     </div>
 </header>
   )
