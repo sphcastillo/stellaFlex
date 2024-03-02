@@ -1,9 +1,7 @@
-import Image from "next/image";
-import collage from "@/images/blogCollage.png";
 import Link from "next/link";
 import { sanityClient } from "@/sanity";
 import { Post } from "@/typings";
-import { useEffect, useState } from "react";
+
 
 interface Props {
   // an array of posts
@@ -30,15 +28,6 @@ export default function Home({ posts }: Props) {
   return (
     <main className="">
 
-      <div className="flex justify-center">
-          <Image 
-          src={collage}
-          alt="Sophiastic Living collage"
-          width={400}
-          height={400}
-          />
-
-</div>  
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 p-2 md:p-6">
 

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "../globals.css";
 import Header from "@/components/Header";
 import Banner from "@/components/Banner";
 
@@ -17,8 +17,8 @@ export default function RootLayout({
   return (
     <html>
       <body className="max-w-7xl mx-auto">
-        {/* <Header /> */}
-        {/* <Banner /> */}
+        <Header />
+        <Banner />
         {children}
       </body>
     </html>
