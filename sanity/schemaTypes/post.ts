@@ -1,4 +1,4 @@
-import {defineField, defineType} from 'sanity'
+import {defineField, defineType} from 'sanity';
 
 export default defineType({
   name: 'post',
@@ -18,6 +18,11 @@ export default defineType({
         source: 'title',
         maxLength: 96,
       },
+    }),
+    defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'string',
     }),
     defineField({
       name: 'author',
