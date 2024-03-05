@@ -5,6 +5,12 @@ import PreviewDocumentsCount from "@/components/PreviewDocumentsCount";
 import PreviewSuspense from "@/components/PreviewSuspense";
 import { groq } from "next-sanity";
 import BlogList from "@/components/BlogList";
+import { draftMode } from "next/headers";
+
+import { SanityDocument } from 'next-sanity';
+import PostList from "@/components/PostList";
+import { loadQuery } from "@/sanity/lib/store";
+import { POSTS_QUERY } from "@/sanity/lib/queries";
 
   const query =  groq`*[_type == "post"]{
     _id,
@@ -18,27 +24,23 @@ import BlogList from "@/components/BlogList";
     slug
   }`;
 
-// async function getData(){
-//   const query =  `*[_type == "post"]{
-//     _id,
-//     title,
-//     slug,
-//     author  -> {
-//     name,
-//     image},
-//     description,
-//     mainImage,
-//     slug
-//   }`;
-
-//   const data = await client.fetch(query);
-
-//   return data;
-// }
 
 const clientFetch = cache(client.fetch.bind(client));
 
 export default async function Home() {
+
+  const initial = await loadQuery<SanityDocument[]>(POSTS_QUERY);
+
+  return <PostList posts={initial.data} />;
+  // if(draftMode()){
+  //   return (
+  //     <PreviewSuspense
+  //       client={client}
+  //     >
+  //       <h1>Loading...</h1>
+  //     </PreviewSuspense>
+  //   )
+  // }
 
   // if(previewData()){
   //   return (
@@ -50,8 +52,8 @@ export default async function Home() {
   //   )
   // }
 
-  const posts = await clientFetch(query);
-  return <BlogList posts={posts} />;
+  // const posts = await clientFetch(query);
+  // return <BlogList posts={posts} />;
 
   // return (
   //   <main className="">

@@ -8,6 +8,9 @@ const nextConfig = {
                 pathname: '**',
             }
         ]
+    },
+    experimental: {
+        taint: true,
     }
 }
 
