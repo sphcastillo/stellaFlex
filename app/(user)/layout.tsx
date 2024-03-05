@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "../globals.css";
 import Header from "@/components/Header";
 import Banner from "@/components/Banner";
+import { draftMode } from "next/headers";
+import LiveVisualEditing from "@/components/LiveVisualEditing";
 
 
 export const metadata: Metadata = {
@@ -20,6 +22,7 @@ export default function RootLayout({
         <Header />
         <Banner />
         {children}
+        {draftMode().isEnabled && <LiveVisualEditing />}
       </body>
     </html>
   );
