@@ -11,6 +11,7 @@ import { groq } from "next-sanity";
 //     slug,
 //     author  -> {
 //     name,
+//     body,
 //     image},
 //     description,
 //     mainImage,

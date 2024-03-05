@@ -7,7 +7,7 @@ import LiveVisualEditing from "@/components/LiveVisualEditing";
 
 
 export const metadata: Metadata = {
-  title: "Stella Flex",
+  title: "Stella Flex: Where Passion and Fitness Collide",
   description: "Fitness and wellness for everyone. For every body. For every lifestyle. For every goal.",
 };
 
