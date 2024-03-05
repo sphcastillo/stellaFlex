@@ -1,12 +1,23 @@
-import { SanityDocument } from 'next-sanity';
 import Image from "next/image";
 import urlFor from "@/sanity/lib/urlFor";
 import ClientSideRoute from './ClientSideRoute';
 import { ArrowUpRightIcon } from "@heroicons/react/24/solid";
 
-export default function PostsList({posts} : {posts: SanityDocument[]}) {
-  console.log("PostsList -> posts", posts)
+type Props = {
+  posts: Post[];
+}
 
+const categoryColors: { [key: string]: string } = {
+  'Fitness': '',
+  'Lifestyle': '#084f57',
+  'Eat': '#ff643c',
+  'Train': 'orange',
+  'Community': '#af6f06',
+  'About Stella': '#567890',
+  'Exercise': '#890123',
+};
+export default function PostsList({ posts }: Props) {
+  console.log("PostsList -> posts", posts)
   return (
     <div>
       <hr className=" border-[#ff643c] mb-10" />
@@ -35,12 +46,15 @@ export default function PostsList({posts} : {posts: SanityDocument[]}) {
                           </div>
 
                           <div className="flex flex-col md:flex-row gap-y-2 md:gap-x-2 items-center">
-                            {post.categories.map((category: any, index: number) => (
-                              <div 
-                                key={index} 
-                                className="bg-[#00c3d7] text-center text-[#002135] px-3 py-1 rounded-full text-sm font-semibold">
-                                  {/* {category.title} */}StellaFlex
-                              </div>
+                          {post.categories.map((category: any, index: number) => (
+                                <div 
+                                    key={index} 
+                                    className="text-center text-white px-3 py-1 rounded-full text-sm font-semibold"
+                                    style={{ backgroundColor: categoryColors[category.title] || '#002135' }}
+                                    >
+                                    
+                                        {category.title}
+                                </div>
                             ))}
                           </div>
                         </div>
@@ -51,7 +65,7 @@ export default function PostsList({posts} : {posts: SanityDocument[]}) {
                         <p className="line-clamp-2 text-gray-500">{post.description}</p>
                       </div>
 
-                      <p className="mt-5 font-bold flex items-center group-hover:underline text-[#002135] group-hover:text-[#ff643c]">
+                      <p className="mt-5 font-bold flex items-center group-hover:underline text-[#002135]">
                         Read post
                         <ArrowUpRightIcon className="ml-2 h-4 w-4" />
                       </p>

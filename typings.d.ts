@@ -15,13 +15,14 @@ interface Post extends Base{
     mainImage: MainImage;
     categories: Category[];
     slug: Slug;
-    body: [object];
+    body: Block[];
 }
 
 interface Author extends Base {
     name: string;
     image: string;
     slug : Slug;
+    bio: Block[];
 }
 
 interface Slug {
@@ -38,4 +39,20 @@ interface Category extends Base {
     title: string;
     description: string;
 
+}
+
+interface Block {
+    _type: "block";
+    children: Span[];
+    key: string;
+    markDefs: any[];
+    style: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+
+}
+
+interface Span {
+    _type: "span";
+    marks: string[];
+    _key: string;
+    text: string;
 }
