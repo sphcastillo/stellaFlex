@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import Logo from '@/images/roundLogo.png';
+import Logo from '@/images/StellaJacobs.png';
 
 function Header() {
   return (
@@ -14,11 +14,11 @@ function Header() {
                     alt="logo" 
                 />
             </Link>
-            <h1>Sophiastic Living</h1>
+            <h1 className='text-[#002135]'>StellaFlex</h1>
         </div>
 
         <div>
-            <Link href='/' className="px-5 py-3 text-sm md:text-base bg-gray-900 text-[#F7AB0A] flex items-center rounded-full text-center">
+            <Link href='/' className="px-5 py-3 text-sm md:text-base bg-[#002135] text-[#00c3d7] flex items-center rounded-full text-center">
                 Sign up to our newsletter
             </Link>
         </div>

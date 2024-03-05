@@ -1,5 +1,9 @@
 import { groq } from "next-sanity";
 
+export const POSTS_QUERY = groq`*[_type == "post" && defined(slug)]`;
+
+export const POST_QUERY = groq`*[_type == "post" && slug.current == $slug][0]`;
+
 // export const POSTS_QUERY =  groq`*[_type == "post"]{
 //     _id,
 //     title,
@@ -14,14 +18,9 @@ import { groq } from "next-sanity";
 //     categories[]
 //   }`;
 
-export const POSTS_QUERY =  groq`*[_type=='post'] {
-  ...,
-  author->,
-  categories[]->
-} | order(_createdAt desc)
-`;
-
-export const CATEGORIES_QUERY = groq`*[_type == "category"]{
-    title,
-    description
-}`;
+// export const POSTS_QUERY =  groq`*[_type=='post'] {
+//   ...,
+//   author->,
+//   categories[]->
+// } | order(_createdAt desc)
+// `;

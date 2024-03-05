@@ -7,8 +7,8 @@ import LiveVisualEditing from "@/components/LiveVisualEditing";
 
 
 export const metadata: Metadata = {
-  title: "Sophiastic Living",
-  description: "Dive into a world of witty wellness, humorous reviews, and playful insights. Join Sophia as she navigates the realms of health, beauty, and lifestyle with laughter as her compass. Discover the fun side of self-care and product exploration with Sophia's quirky take on living life to the fullest!",
+  title: "Stella Flex",
+  description: "Fitness and wellness for everyone. For every body. For every lifestyle. For every goal.",
 };
 
 export default function RootLayout({
@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html>
-      <body className="max-w-7xl mx-auto">
+      <body className="max-w-7xl mx-auto bg-[#f2f5f7]">
         <Header />
         <Banner />
         {children}

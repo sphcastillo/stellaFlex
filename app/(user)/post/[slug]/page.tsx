@@ -1,24 +1,30 @@
 import urlFor from '@/sanity/lib/urlFor';
 import Image from 'next/image';
-import React from 'react'
+import { QueryParams, SanityDocument } from 'next-sanity';
+import { draftMode } from 'next/headers';
+import { loadQuery } from '@/sanity/lib/store';
+import { POSTS_QUERY, POST_QUERY } from '@/sanity/lib/queries';
+import PostsListPreview from '@/components/PostPreview';
+import PostsList from '@/components/PostsList';
+import { client } from '@/sanity/lib/client';
 
-function Post() {
-  return (
-    <article className="px-10 pb-28">
-        <section className="space-y-2 border border-[#F7AB0A] text-white">
-            <div className="relative min-h-56 flex flex-col md:flex-row justify-between">
-                <div className="absolute top-0 w-full h-full opacity-10 blur-sm p-10">
-                    {/* <Image 
-                        className='object-cover object-center mx-auto'
-                        src={urlFor(post.mainImage).url()}
-                        alt={post.title}
-                        layout='fill'
-                    /> */}
-                </div>
-            </div>
-        </section>
-    </article>
-  )
+export async function getStaticParams(){
+    const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY);
+
+    return posts.map((post) => ({
+        slug: post.slug.current
+    }))
 }
 
-export default Post;
+export default async function Page({params} : {params: QueryParams}) {
+    const initial = await loadQuery<SanityDocument[]>(POST_QUERY, params, {
+        perspective: draftMode().isEnabled ? "previewDrafts": "published"
+    });
+
+    return draftMode().isEnabled ? (
+        <PostsListPreview initial={initial} />
+    ) : (
+        <PostsList posts={initial.data} /> 
+    )
+}
+

@@ -1,4 +1,4 @@
-import SL_logo from "@/images/roundLogo.png";
+import SJ_logo from "@/images/StellaJacobs.png";
 import Image from "next/image";
 
 function Logo(props: any) {
@@ -6,8 +6,8 @@ function Logo(props: any) {
     return (
         <div className="flex items-center space-x-2">
             <Image 
-                src={SL_logo}
-                alt="Sophiastic Living Logo"
+                src={SJ_logo}
+                alt="Stella Jacobs Logo"
                 width={100}
                 height={100}
                 className="rounded-full object-cover"

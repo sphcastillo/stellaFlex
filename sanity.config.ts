@@ -38,8 +38,7 @@ export default defineConfig({
   ],
   icon: Logo,
   logo: Logo,
-  subtitle: 'Sophiastic Living Studio',
-  title: "Sophiastic Living",
+  title: "StellaFlex Sanity Studio",
   studio: {
     components: {
       logo: Logo,

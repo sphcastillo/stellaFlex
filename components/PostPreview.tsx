@@ -2,24 +2,26 @@
 
 import { POSTS_QUERY } from "@/sanity/lib/queries";
 import { QueryResponseInitial, useQuery } from "@sanity/react-loader";
-import { SanityDocument } from "next-sanity";
+import { SanityDocument, QueryParams } from "next-sanity";
 
-import PostList from "./PostList";
+import PostList from "./PostsList";
 
 export default function PostsListPreview({
-    initial
+    initial,
+    params
 }: {
-    initial: QueryResponseInitial<SanityDocument[]>
+    initial: QueryResponseInitial<SanityDocument>;
+    params: QueryParams
 }){
-    const { data } = useQuery<SanityDocument[] | null>(
+    const { data } = useQuery<SanityDocument | null>(
         POSTS_QUERY,
-        {},
+        params,
         { initial }
     )
-    return data ?(
+    return data ? (
     <PostList posts={data} />
     ) : (
-        <div>No posts found.</div>
+        <div className="bg-red-100">No posts found.</div>
     )
 
 }
