@@ -20,9 +20,20 @@ type Props = {
 
 export const revalidate = 60;
 
+const categoryColors: { [key: string]: string } = {
+    'Fitness': 'purple',
+    'Lifestyle': 'green',
+    'Eat': '#ff643c',
+    'Train': 'orange',
+    'Community': '#af6f06',
+    'About Stella': 'pink',
+    'Exercise': '#890123',
+  };
 
-export async function getStaticPaths(){
-    // implementation for generating static paths
+
+export async function generateStaticParams(){
+
+
     const query = groq`*[_type == "post"]
         {
             slug
@@ -39,18 +50,9 @@ export async function getStaticPaths(){
     ));
  }
 
- const categoryColors: { [key: string]: string } = {
-    'Fitness': 'purple',
-    'Lifestyle': 'green',
-    'Eat': '#ff643c',
-    'Train': 'orange',
-    'Community': '#af6f06',
-    'About Stella': 'pink',
-    'Exercise': '#890123',
-  };
 
 async function Post({params: { slug }}: Props) {
-    // implementation for fetching & rendering single post
+
     const query = groq`*[_type == "post" && slug.current == $slug][0]{
         title,
         mainImage,
@@ -140,4 +142,4 @@ async function Post({params: { slug }}: Props) {
 
 }
 
-export { Post as default}
+export default Post;
