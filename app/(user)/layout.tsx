@@ -5,7 +5,7 @@ import Banner from "@/components/Banner";
 import { draftMode } from "next/headers";
 import dynamic from "next/dynamic";
 import { token } from '@/sanity/lib/sanity.fetch';
-import LiveVisualEditing from "@/components/LiveVisualEditing";
+
 
 
 export const metadata: Metadata = {

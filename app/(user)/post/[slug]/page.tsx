@@ -21,7 +21,7 @@ type Props = {
 export const revalidate = 60;
 
 
-export async function getStaticParams(){
+export async function getStaticPaths(){
     const query = groq`*[_type == "post"]
         {
             slug
