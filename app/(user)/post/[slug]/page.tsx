@@ -77,7 +77,7 @@ async function Post({params: { slug }}: Props) {
                     <div className="absolute top-0 w-full h-full opacity-20 blur-sm p-10">
                         <Image 
                             src={urlFor(post.mainImage).url()}
-                            alt={post.author.name}
+                            alt={post.author?.name}
                             className='object-cover object-center mx-auto'
                             fill
                         />
@@ -100,13 +100,13 @@ async function Post({params: { slug }}: Props) {
                             <div className="flex items-center space-x-2">
                                 <Image 
                                     className='rounded-full'
-                                    src={urlFor(post.author.image).url()}
-                                    alt={post.author.name}
+                                    src={urlFor(post.author?.image).url()}
+                                    alt={post.author?.name}
                                     width={60}
                                     height={60}
                                 />
                                 <div className='w-64'>
-                                    <h3 className="text-lg font-bold">{post.author.name}</h3>
+                                    <h3 className="text-lg font-bold">{post.author?.name}</h3>
                                     <div className="line-clamp-4 text-ellipsis text-[14px] text-white">
                                         <PortableText value={post.author.bio} components={RichTextComponents}/>
                                     </div>
