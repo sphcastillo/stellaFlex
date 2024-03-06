@@ -22,6 +22,7 @@ export const revalidate = 60;
 
 
 export async function getStaticPaths(){
+    // implementation for generating static paths
     const query = groq`*[_type == "post"]
         {
             slug
@@ -49,6 +50,7 @@ export async function getStaticPaths(){
   };
 
 async function Post({params: { slug }}: Props) {
+    // implementation for fetching & rendering single post
     const query = groq`*[_type == "post" && slug.current == $slug][0]{
         title,
         mainImage,
@@ -138,4 +140,4 @@ async function Post({params: { slug }}: Props) {
 
 }
 
-export default Post;
+export { Post as default}
