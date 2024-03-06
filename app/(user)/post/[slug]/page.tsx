@@ -30,16 +30,12 @@ export async function getStaticParams(){
     const slugs: Post[] = await client.fetch(query);
     const slugRoutes = slugs.map((slug) => slug.slug.current);
 
-    console.log("slugRoutes", slugRoutes)
-
     return slugRoutes.map((slug) => (
         
         {
         slug,
         }
     ));
-
- 
  }
 
  const categoryColors: { [key: string]: string } = {
@@ -53,7 +49,6 @@ export async function getStaticParams(){
   };
 
 async function Post({params: { slug }}: Props) {
-    // console.log("Post -> slug", slug)
     const query = groq`*[_type == "post" && slug.current == $slug][0]{
         title,
         mainImage,

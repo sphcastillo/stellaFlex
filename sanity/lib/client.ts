@@ -9,11 +9,5 @@ export const client = createClient({
     dataset, 
     apiVersion, 
     useCdn: false,
-    // These settings will be overriden by the preview client
-    // when draftMode is enabled
     perspective: 'published',
-    stega: {
-        enabled: false,
-        studioUrl: '/studio',
-    }
 })
