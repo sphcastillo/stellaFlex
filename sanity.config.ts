@@ -13,15 +13,14 @@ import StudioNavbar from './components/StudioNavbar'
 import Logo from './components/Logo'
 import { presentationTool } from 'sanity/presentation';
 
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
-const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET
-const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '';
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || '';
+const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || '';
 
 export default defineConfig({
   basePath: '/studio',
   projectId,
   dataset,
-  // Add and edit the content schema in the './sanity/schema' folder
   schema,
   plugins: [
     structureTool(),
