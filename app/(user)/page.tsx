@@ -2,20 +2,29 @@ import { SanityDocument } from 'next-sanity';
 import PostsList from "@/components/PostsList";
 import { loadQuery } from "@/sanity/lib/store";
 import { POSTS_QUERY } from "@/sanity/lib/queries";
-
+import { groq } from "next-sanity";
 import { draftMode } from 'next/headers';
 import PostsListPreview from '@/components/PostPreview';
+import { client } from '@/sanity/lib/client';
+
+const query = groq`*[_type=='post'] {
+  ...,
+  author->,
+  categories[]->
+} | order(_createdAt desc)
+`;
 
 
 export default async function Home() {
 
-  const initial = await loadQuery<SanityDocument[]>(POSTS_QUERY, {}, {
-    perspective: draftMode().isEnabled ? "previewDrafts" : "published",
-  });
+  // if(draftMode().isEnabled){
+  //   const initial = await client.fetch(query);
 
-  return draftMode().isEnabled ? (
-    <PostsListPreview initial={initial} />
-  ) : (
-  <PostsList posts={initial.data} />)
+  //   return <PostsListPreview initial={initial} />
+  // }
+
+
+  const posts = await client.fetch(query);
+  return <PostsList posts={posts} />
 
 }

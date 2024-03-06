@@ -17,7 +17,6 @@ const categoryColors: { [key: string]: string } = {
   'Exercise': '#890123',
 };
 export default function PostsList({ posts }: Props) {
-  console.log("PostsList -> posts", posts)
   return (
     <div>
       <hr className=" border-[#ff643c] mb-10" />

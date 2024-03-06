@@ -5,6 +5,13 @@ import { groq } from "next-sanity";
 import { PortableText } from '@portabletext/react';
 import { RichTextComponents } from '@/components/RichTextComponents';
 
+// interface IFormInput {
+//     _id: string;
+//     name: string;
+//     email: string;
+//     comment: string;
+// }
+
 type Props = {
     params: {
         slug: string
@@ -23,9 +30,16 @@ export async function getStaticParams(){
     const slugs: Post[] = await client.fetch(query);
     const slugRoutes = slugs.map((slug) => slug.slug.current);
 
-    return slugRoutes.map((slug) => ({
+    console.log("slugRoutes", slugRoutes)
+
+    return slugRoutes.map((slug) => (
+        
+        {
         slug,
-    }));
+        }
+    ));
+
+ 
  }
 
  const categoryColors: { [key: string]: string } = {
@@ -39,6 +53,7 @@ export async function getStaticParams(){
   };
 
 async function Post({params: { slug }}: Props) {
+    // console.log("Post -> slug", slug)
     const query = groq`*[_type == "post" && slug.current == $slug][0]{
         title,
         mainImage,
@@ -64,8 +79,8 @@ async function Post({params: { slug }}: Props) {
                         <Image 
                             src={urlFor(post.mainImage).url()}
                             alt={post.author.name}
-                            layout="fill"
                             className='object-cover object-center mx-auto'
+                            fill
                         />
                     </div>
 
@@ -120,7 +135,7 @@ async function Post({params: { slug }}: Props) {
 
                 </div>
             </article>
-            <div>
+            <div className='mt-10'>
 
             </div>
         </div>
