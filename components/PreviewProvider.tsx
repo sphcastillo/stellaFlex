@@ -4,6 +4,7 @@ import LiveQueryProvider from 'next-sanity/preview';
 import { suspend } from 'suspend-react';
 
 const UniqueKey = Symbol('@/sanity/lib/client');
+console.log('UniqueKey', UniqueKey)
 
 export default function PreviewProvider({
     children,
@@ -13,6 +14,7 @@ export default function PreviewProvider({
     token?: string
 }){
     const {client} = suspend(() => import('@/sanity/lib/client'), [UniqueKey])
+    console.log('client', client)
     if(!token) throw new TypeError('Missing token')
     return (
         <LiveQueryProvider

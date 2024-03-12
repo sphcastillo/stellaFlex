@@ -1,58 +1,69 @@
 type Base = {
-    _id: string;
     _createdAt: string;
-    _updatedAt: string;
+    _id: string;
     _rev: string;
     _type: string;
-};
-
-interface Post extends Base{
-    _id: string;
-    _createdAt: string;
-    title: string;
-    description: string;
+    _updatedAt: string;
+  };
+  
+  interface Post extends Base {
     author: Author;
-    mainImage: MainImage;
-    categories: Category[];
-    slug: Slug;
     body: Block[];
-}
-
-interface Author extends Base {
-    name: string;
-    image: string;
-    slug : Slug;
-    bio: Block[];
-}
-
-interface Slug {
-    current: string;
-    _type: 'slug';
-}
-
-interface MainImage {
-    asset: Reference;
-    _type: "image";
-}
-
-interface Category extends Base {
+    categories: Category[];
+    mainImage: Image;
+    slug: Slug;
     title: string;
     description: string;
-
-}
-
-interface Block {
+  }
+  
+  interface Author extends Base {
+    bio: Block[];
+    image: Image;
+    name: string;
+    slug: Slug;
+  }
+  
+  interface Image {
+    _type: "image";
+    asset: Reference;
+  }
+  
+  interface Reference {
+    _ref: string;
+    _type: "reference";
+  }
+  
+  interface Slug {
+    _type: "slug";
+    current: string;
+  }
+  
+  interface Block {
+    _key: string;
     _type: "block";
     children: Span[];
-    key: string;
     markDefs: any[];
     style: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-
-}
-
-interface Span {
+  }
+  
+  interface Span {
+    _key: string;
     _type: "span";
     marks: string[];
-    _key: string;
     text: string;
-}
+  }
+  
+  interface Category extends Base {
+    description: string;
+    title: string;
+  }
+  
+  interface MainImage {
+    _type: "image";
+    asset: Reference;
+  }
+  
+  interface Title {
+    _type: "string";
+    current: string;
+  }

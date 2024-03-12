@@ -5,17 +5,11 @@ import { groq } from "next-sanity";
 import { PortableText } from '@portabletext/react';
 import { RichTextComponents } from '@/components/RichTextComponents';
 
-// interface IFormInput {
-//     _id: string;
-//     name: string;
-//     email: string;
-//     comment: string;
-// }
 
 type Props = {
     params: {
         slug: string
-    }
+    };
 };
 
 export const revalidate = 60;
@@ -68,11 +62,12 @@ async function Post({params: { slug }}: Props) {
     }`;
 
     const post: Post = await client.fetch(query, { slug: slug });
-    console.log(post)
+    console.log("the body: ", post.body);
+
     return (
-        <div>
-            <article className="px-10 pb-28">
-                <section className="space-y-2 border border-[#00c3d7] text-white">
+
+            <article  className='px-10 pb-8'>
+                {/* <section className="space-y-2 border border-[#00c3d7] text-white">
                 <div className="relative min-h-56 flex flex-col md:flex-row justify-between">
                     <div className="absolute top-0 w-full h-full opacity-20 blur-sm p-10">
                         <Image 
@@ -96,22 +91,6 @@ async function Post({params: { slug }}: Props) {
                                     }
                                 </p>
                             </div>
-
-                            <div className="flex items-center space-x-2">
-                                <Image 
-                                    className='rounded-full'
-                                    src={post.author?.image && urlFor(post.author.image).url()}
-                                    alt={post.author?.name}
-                                    width={60}
-                                    height={60}
-                                />
-                                <div className='w-64'>
-                                    <h3 className="text-lg font-bold">{post.author?.name}</h3>
-                                    <div className="line-clamp-4 text-ellipsis text-[14px] text-white">
-                                        <PortableText value={post.author?.bio} components={RichTextComponents}/>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
 
                         <div>
@@ -129,15 +108,27 @@ async function Post({params: { slug }}: Props) {
                         </div>
                     </section>
                 </div>
-                </section>
-                <div>
-
-                </div>
+                </section> */}
+                
+                    <div className="flex items-center justify-center space-x-2">
+                        <Image 
+                            className='rounded-full'
+                            src={post.author?.image && urlFor(post.author.image).url()}
+                            alt={post.author?.name}
+                            width={60}
+                            height={60}
+                        />
+                        <div className='w-3/5'>
+                            <h3 className="text-lg font-bold">{post.author?.name}</h3>
+                                <div className="line-clamp-4 text-ellipsis text-[14px]">
+                                    <PortableText value={post.author?.bio} components={RichTextComponents}/>
+                                </div>
+                        </div>
+                    </div>
+                    <section className='py-8'>
+                        <PortableText value={post.body} components={RichTextComponents}/>
+                    </section>
             </article>
-            <div className='mt-10'>
-
-            </div>
-        </div>
     )
 
 }

@@ -1,10 +1,10 @@
-import PostsList from "@/components/PostsList";
-import {LiveQuery} from 'next-sanity/preview/live-query';
+
+import { LiveQuery } from 'next-sanity/preview/live-query';
 import { groq } from "next-sanity";
 import { draftMode } from 'next/headers';
-import { client } from '@/sanity/lib/client';
+import { sanityFetch } from "@/sanity/lib/sanity.fetch";
 import PreviewPostsList from "@/components/PreviewPostsList";
-// import { sanityFetch } from "@/sanity/lib/sanity.fetch";
+import PostsList from "@/components/PostsList";
 
 const query = groq`*[_type=='post'] {
   ...,
@@ -16,17 +16,17 @@ const query = groq`*[_type=='post'] {
 
 export default async function Home() {
 
-  const posts = await client.fetch(query);
 
+  const data = await sanityFetch<any>({query});
 
   return (
     <LiveQuery
       enabled={draftMode().isEnabled}
       query={query}
-      initialData={posts}
+      initialData={data}
       as={PreviewPostsList}
     >
-      <PostsList posts={posts} />
+      <PostsList posts={data} />
     </LiveQuery>
   )
 
