@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import "../globals.css";
 import Header from "@/components/Header";
-import Banner from "@/components/Banner";
+import { Inter } from 'next/font/google';
 
 import LiveVisualEditing from "@/components/LiveVisualEditing";
 import { draftMode } from "next/headers";
+const inter = Inter({ subsets: ['latin'] })
+
 
 export const metadata: Metadata = {
   title: "Stella Flex: Where Passion and Fitness Collide",
@@ -17,10 +19,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html>
+    <html className={inter.className}>
       <body className="max-w-7xl mx-auto bg-[#f2f5f7]">
         <Header />
-        <Banner />
+        {/* <Banner /> */}
         {children}
         {draftMode().isEnabled && <LiveVisualEditing />}
       </body>

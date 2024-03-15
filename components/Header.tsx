@@ -1,29 +1,42 @@
+'use client'
 import Image from 'next/image';
 import Link from 'next/link';
-import Logo from '@/images/StellaJacobs.png';
+import Logo from '@/images/stellaFlexLogo.png';
+import { IoSearchOutline } from "react-icons/io5";
+import { MdAccountCircle } from "react-icons/md";
+
 
 function Header() {
-  return (
-    <header className="flex items-center justify-between space-x-2 font-bold px-10 py-5">
-        <div className="flex items-center space-x-2">
-            <Link href="/">
-                <Image 
-                    src={Logo}
-                    width={50}
-                    height={50}
-                    alt="logo" 
-                />
-            </Link>
-            <h1 className='text-[#002135]'>StellaFlex</h1>
-        </div>
 
-        <div>
-            <Link href='/' className="px-5 py-3 text-sm md:text-base bg-[#002135] text-[#00c3d7] flex items-center rounded-full text-center">
-                Sign up to our newsletter
+    return (
+        <header className="sticky top-0 z-50 grid grid-cols-2 shadow-md md:px-10 bg-gray-200">
+
+            <div className="flex items-center space-x-2">
+                <Link href="/">
+                    <Image 
+                        src={Logo}
+                        width={80}
+                        height={80}
+                        alt="StellaFlex logo" 
+                    />
+                </Link>
+            </div>
+
+
+
+            <div className='flex items-center justify-end'>
+            <Link
+            href="/"
+            className="text-sm md:text-base py-3 px-4 bg-blue-950 text-orange-400 flex items-center rounded-full text-center whitespace-nowrap"
+            >
+            Sign up to our newsletter
             </Link>
+            <MdAccountCircle className="h-7 w-7 cursor-pointer ml-2" />
         </div>
-    </header>
-  )
+            
+
+        </header>
+    )
 }
 
 export default Header;

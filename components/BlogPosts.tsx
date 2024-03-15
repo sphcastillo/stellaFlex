@@ -1,8 +1,13 @@
+'use client'
+
 import { SanityDocument } from 'next-sanity';
 import Link from 'next/link';
 import { ArrowUpRightIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import urlFor from "@/sanity/lib/urlFor";
+import { useEffect, useState } from 'react';
+import stellaFlexHero from "@/images/stellaFlexFitness.jpeg";
+import stellaFlexHeroMobile from "@/images/StellaFlexmobile.png";
 
 const categoryColors: { [key: string]: string } = {
     'Fitness': '',
@@ -15,10 +20,34 @@ const categoryColors: { [key: string]: string } = {
 };
 
 function BlogPosts({ posts }: { posts: SanityDocument[] }) {
+
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => { 
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 640)
+    }
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    }
+  }, []);
+
   return (
     <main>
-        {/* <hr className=" border-[#ff643c] mb-10" /> */}
-        <div className="grid grid-cols-1 md:grid-cols-2 px-10 gap-10 gap-y-16 pb-24">
+        <div className='w-full min-h-[350px] flex items-center'>
+          <Image 
+            src={isSmallScreen ? stellaFlexHeroMobile : stellaFlexHero}
+            alt="Stella Flex Hero Image"
+            layout='responsive'
+            className='w-full object-cover object-center'
+          />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 px-10 gap-10 gap-y-16 pb-24 pt-[50px]">
             {posts?.length > 0 ? (
                 posts.map((post) => (
                     <Link href={post.slug.current} key={post._id}>
