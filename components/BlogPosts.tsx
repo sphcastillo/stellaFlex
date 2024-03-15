@@ -1,29 +1,27 @@
+import { SanityDocument } from 'next-sanity';
+import Link from 'next/link';
+import { ArrowUpRightIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import urlFor from "@/sanity/lib/urlFor";
-import ClientSideRoute from './ClientSideRoute';
-import { ArrowUpRightIcon } from "@heroicons/react/24/solid";
-
-type Props = {
-  posts: Post[];
-}
 
 const categoryColors: { [key: string]: string } = {
-  'Fitness': '',
-  'Lifestyle': '#084f57',
-  'Eat': '#ff643c',
-  'Train': 'orange',
-  'Community': '#af6f06',
-  'About Stella': '#567890',
-  'Exercise': '#890123',
+    'Fitness': '',
+    'Lifestyle': '#084f57',
+    'Eat': '#ff643c',
+    'Train': 'orange',
+    'Community': '#af6f06',
+    'About Stella': '#567890',
+    'Exercise': '#890123',
 };
-export default function PostsList({ posts }: Props) {
+
+function BlogPosts({ posts }: { posts: SanityDocument[] }) {
   return (
-    <div>
-      <hr className=" border-[#ff643c] mb-10" />
-      <div className="grid grid-cols-1 md:grid-cols-2 px-10 gap-10 gap-y-16 pb-24">
-          {posts?.length > 0 ? (
-              posts.map((post) => (
-                  <ClientSideRoute key={post._id} route={`/post/${post.slug.current}`}>
+    <main>
+        {/* <hr className=" border-[#ff643c] mb-10" /> */}
+        <div className="grid grid-cols-1 md:grid-cols-2 px-10 gap-10 gap-y-16 pb-24">
+            {posts?.length > 0 ? (
+                posts.map((post) => (
+                    <Link href={post.slug.current} key={post._id}>
                     <div className="flex flex-col group cursor-pointer">
                       <div className="relative w-full h-80 drop-shadow-xl group-hover:scale-105 transition-transform duration-200 ease-out">
                         <Image
@@ -45,7 +43,7 @@ export default function PostsList({ posts }: Props) {
                           </div>
 
                           <div className="flex flex-col md:flex-row gap-y-2 md:gap-x-2 items-center">
-                          {post.categories.map((category: any, index: number) => (
+                          {/* {post.categories.map((category: any, index: number) => (
                                 <div 
                                     key={index} 
                                     className="text-center text-white px-3 py-1 rounded-full text-sm font-semibold"
@@ -54,7 +52,7 @@ export default function PostsList({ posts }: Props) {
                                     
                                         {category.title}
                                 </div>
-                            ))}
+                            ))} */}
                           </div>
                         </div>
                       </div>
@@ -69,17 +67,16 @@ export default function PostsList({ posts }: Props) {
                         <ArrowUpRightIcon className="ml-2 h-4 w-4" />
                       </p>
                     </div>
-                  </ClientSideRoute>
-              ))
-          ) : (      
-            <div className='flex justify-center'>
-              <div className="py-4 text-[#ff643c]">
-                  YIKES - No posts found! Contact Stella ASAP!
-              </div>
-            </div>
+                    </Link>
+                ))
+            ):
+            (
+                <p>No posts found</p>
+            )}
+        </div>
 
-          )}
-      </div>
-    </div>
+    </main>
   )
 }
+
+export default BlogPosts

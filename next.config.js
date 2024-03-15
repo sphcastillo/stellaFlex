@@ -5,12 +5,16 @@ const nextConfig = {
             {
                 protocol: 'https',
                 hostname: 'cdn.sanity.io',
-                pathname: '**',
             }
         ]
     },
     experimental: {
         taint: true,
+    },
+    logging: {
+        fetches: {
+            fullUrl: true
+        }
     }
 }
 

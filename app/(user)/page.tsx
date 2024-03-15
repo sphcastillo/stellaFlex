@@ -1,34 +1,21 @@
+// ./app/page.tsx
 
-import { LiveQuery } from 'next-sanity/preview/live-query';
-import { groq } from "next-sanity";
-import { draftMode } from 'next/headers';
-import { sanityFetch } from "@/sanity/lib/sanity.fetch";
-import PreviewPostsList from "@/components/PreviewPostsList";
-import PostsList from "@/components/PostsList";
+import { SanityDocument } from "next-sanity";
+import { draftMode } from "next/headers";
 
-const query = groq`*[_type=='post'] {
-  ...,
-  author->,
-  categories[]->
-} | order(_createdAt desc)
-`;
-
+import { loadQuery } from "@/sanity/lib/store";
+import { POSTS_QUERY } from "@/sanity/lib/queries";
+import BlogPosts from "@/components/BlogPosts";
+import PostsPreview from "@/components/PostsPreview";
 
 export default async function Home() {
+  const initial = await loadQuery<SanityDocument[]>(POSTS_QUERY, {}, {
+    perspective: draftMode().isEnabled ? "previewDrafts" : "published"
+  });
 
-
-  const data = await sanityFetch<any>({query});
-
-  return (
-    <LiveQuery
-      enabled={draftMode().isEnabled}
-      query={query}
-      initialData={data}
-      as={PreviewPostsList}
-    >
-      <PostsList posts={data} />
-    </LiveQuery>
+  return draftMode().isEnabled ? (
+    <PostsPreview initial={initial} />
+  ) : (
+    <BlogPosts posts={initial.data} />
   )
-
-
 }

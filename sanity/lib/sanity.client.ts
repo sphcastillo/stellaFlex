@@ -10,4 +10,9 @@ export const client = createClient({
     apiVersion, 
     useCdn: false,
     perspective: 'published',
+    stega: {
+        enabled: false,
+        studioUrl: '/studio'
+    }
 })
+
