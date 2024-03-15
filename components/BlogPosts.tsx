@@ -100,11 +100,12 @@ function BlogPosts({ posts }: { posts: SanityDocument[] }) {
                           <p className="line-clamp-2 text-gray-500">{post.description}</p>
                         </div>
                       </div>
-
-                      <p className="mt-5 font-bold flex items-center group-hover:underline text-[#f5c15d]">
-                        Read post
-                        <ArrowUpRightIcon className="ml-2 h-4 w-4" />
-                      </p>
+                      <div className={poppins.className}>
+                        <p className="mt-5 font-bold flex items-center group-hover:underline text-[#f5c15d]">
+                          Read post
+                          <ArrowUpRightIcon className="ml-2 h-4 w-4" />
+                        </p>
+                      </div>
                     </div>
                     </Link>
                 ))

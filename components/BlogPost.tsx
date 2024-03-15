@@ -4,6 +4,12 @@ import urlFor from "@/sanity/lib/urlFor";
 import { SanityDocument } from "next-sanity";
 import { groq } from "next-sanity";
 import { client } from "@/sanity/lib/sanity.client";
+import { Poppins, Inconsolata } from 'next/font/google';
+
+const poppins = Poppins({ weight: "400", subsets: ['latin'] })
+const inconsolataBold = Inconsolata({ weight: "800", subsets: ['latin'] })
+const inconsolata = Inconsolata({ weight: "400", subsets: ['latin'] })
+
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? '';
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET ?? '';
@@ -35,7 +41,7 @@ export default function Post({ post }: { post: SanityDocument }) {
   return (
     <main className="pb-28">
       <div className="flex justify-center">
-        <div className="h-full w-4/5">
+        <div className="h-full">
           <Image 
               src={urlFor(post.mainImage).url()}
               className="w-full object-contain"
@@ -45,8 +51,12 @@ export default function Post({ post }: { post: SanityDocument }) {
             />
         </div>
       </div>
-      <div className="flex justify-center pt-5">
-        <h1 className="text-4xl font-extrabold">{post.title}</h1>
+      <div className="flex justify-center py-5">
+        <div className={inconsolataBold.className}>
+          <div className="px-[25px] sm:px-[85px] pt-3">
+            <h1 className="text-3xl font-bold text-center">{post.title}</h1>
+          </div>
+        </div>
       </div>
 
       <div className="flex items-center justify-center space-x-2">
@@ -59,12 +69,17 @@ export default function Post({ post }: { post: SanityDocument }) {
           src={urlFor(post.author.image).url()}
         /> */}
       </div>
-      <div className="flex justify-center px-3 py-3">
-        <h3 className="text-center">{post.description}</h3>
+      <div className="">
+        <div className={inconsolata.className}>
+          <div className="px-8 sm:px-[50px] pb-3">
+            <h4 className="text-[#f5c15d] text-center">{post.description}</h4>
+          </div>
+        </div>
       </div>
-
-      <div className="px-10">
-        <PortableText value={post.body}/>
+      <div className={poppins.className}>
+        <div className="px-10">
+          <PortableText value={post.body} />
+        </div>
       </div>
     </main>
   );
