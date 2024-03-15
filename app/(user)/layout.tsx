@@ -9,13 +9,12 @@ import { draftMode } from "next/headers";
 export const metadata: Metadata = {
   title: "Stella Flex: Where Passion and Fitness Collide",
   description: "Fitness and wellness for everyone. For every body. For every lifestyle. For every goal.",
-};
-
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
+} : Readonly<{ 
+  children: React.ReactNode
 }>) {
   return (
     <html>
@@ -26,5 +25,5 @@ export default function RootLayout({
         {draftMode().isEnabled && <LiveVisualEditing />}
       </body>
     </html>
-  );
+  )
 }
