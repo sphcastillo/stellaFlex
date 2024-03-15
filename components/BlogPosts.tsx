@@ -6,6 +6,12 @@ import { ArrowUpRightIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import urlFor from "@/sanity/lib/urlFor";
 import { useEffect, useState } from 'react';
+import { Poppins, Inconsolata } from 'next/font/google';
+
+const poppins = Poppins({ weight: "400", subsets: ['latin'] })
+const inconsolataBold = Inconsolata({ weight: "800", subsets: ['latin'] })
+const inconsolata = Inconsolata({ weight: "400", subsets: ['latin'] })
+
 import stellaFlexHero from "@/images/stellaFlexFitness.jpeg";
 import stellaFlexHeroMobile from "@/images/StellaFlexmobile.png";
 
@@ -60,7 +66,7 @@ function BlogPosts({ posts }: { posts: SanityDocument[] }) {
                           className="object-cover"
                         />
                         <div className="absolute bottom-0 w-full bg-opacity-20 bg-black backdrop-blur-lg rounded drop-shadow-lg text-[#f2f5f7] p-5 flex justify-between">
-                          <div>
+                          <div className={poppins.className}>
                             <p className="font-bold">{post.title}</p>
                             {/* <p>
                               {new Date(post._createdAt).toLocaleDateString("en-US", {
@@ -87,11 +93,15 @@ function BlogPosts({ posts }: { posts: SanityDocument[] }) {
                       </div>
 
                       <div className="mt-5 flex-1 ">
-                        <p className="text-lg font-bold text-[#002135]">{post.title}</p>
-                        <p className="line-clamp-2 text-gray-500">{post.description}</p>
+                        <div className={inconsolataBold.className}>
+                          <p className="text-[20px] font-bold text-[#002135]">{post.title}</p>
+                        </div>
+                        <div className={inconsolata.className}>
+                          <p className="line-clamp-2 text-gray-500">{post.description}</p>
+                        </div>
                       </div>
 
-                      <p className="mt-5 font-bold flex items-center group-hover:underline text-[#002135]">
+                      <p className="mt-5 font-bold flex items-center group-hover:underline text-[#f5c15d]">
                         Read post
                         <ArrowUpRightIcon className="ml-2 h-4 w-4" />
                       </p>
