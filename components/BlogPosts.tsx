@@ -15,6 +15,10 @@ const inconsolata = Inconsolata({ weight: "400", subsets: ['latin'] })
 import stellaFlexHero from "@/images/stellaFlexFitness.jpeg";
 import stellaFlexHeroMobile from "@/images/StellaFlexmobile.png";
 
+interface Props {
+  posts: Post[];
+}; 
+
 const categoryColors: { [key: string]: string } = {
     'Fitness': '',
     'Lifestyle': '#084f57',
@@ -25,7 +29,8 @@ const categoryColors: { [key: string]: string } = {
     'Exercise': '#890123',
 };
 
-function BlogPosts({ posts }: { posts: SanityDocument[] }) {
+function BlogPosts({posts }: Props) {
+
 
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
@@ -78,16 +83,11 @@ function BlogPosts({ posts }: { posts: SanityDocument[] }) {
                           </div>
 
                           <div className="flex flex-col md:flex-row gap-y-2 md:gap-x-2 items-center">
-                          {/* {post.categories.map((category: any, index: number) => (
-                                <div 
-                                    key={index} 
-                                    className="text-center text-white px-3 py-1 rounded-full text-sm font-semibold"
-                                    style={{ backgroundColor: categoryColors[category.title] || '#002135' }}
-                                    >
-                                    
-                                        {category.title}
-                                </div>
-                            ))} */}
+                            {post.categories.map((category) => (
+                              <div key={category._id} className='bg-[#F7AB0A] text-center text-black px-3 py-1 rounded-full text-sm font-semibold'>
+                                {category.title}
+                              </div>
+                            ))}
                           </div>
                         </div>
                       </div>
@@ -101,7 +101,7 @@ function BlogPosts({ posts }: { posts: SanityDocument[] }) {
                         </div>
                       </div>
                       <div className={poppins.className}>
-                        <p className="mt-5 font-bold flex items-center group-hover:underline text-[#f5c15d]">
+                        <p className="mt-5 font-bold flex items-center group-hover:underline text-[#F7AB0A]">
                           Read post
                           <ArrowUpRightIcon className="ml-2 h-4 w-4" />
                         </p>
@@ -119,4 +119,4 @@ function BlogPosts({ posts }: { posts: SanityDocument[] }) {
   )
 }
 
-export default BlogPosts
+export default BlogPosts;
