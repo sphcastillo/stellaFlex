@@ -29,7 +29,7 @@ const categoryColors: { [key: string]: string } = {
     'Exercise': '#890123',
 };
 
-function BlogPosts({posts }: Props) {
+function BlogPosts({ posts }: Props) {
 
 
   const [isSmallScreen, setIsSmallScreen] = useState(false);

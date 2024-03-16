@@ -1,7 +1,7 @@
 import Image from "next/image"
 import { PortableText } from "@portabletext/react";
 import urlFor from "@/sanity/lib/urlFor";
-import { SanityDocument } from "next-sanity";
+
 import { groq } from "next-sanity";
 import { client } from "@/sanity/lib/sanity.client";
 import { Poppins, Inconsolata } from 'next/font/google';
@@ -11,35 +11,11 @@ const inconsolataBold = Inconsolata({ weight: "800", subsets: ['latin'] })
 const inconsolata = Inconsolata({ weight: "400", subsets: ['latin'] })
 
 
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? '';
-const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET ?? '';
+export default async function BlogPost( { post }: { post : any}) {
 
-const authorQuery = groq`*[_type=='author']
-{
-  slug,
-    name,
-    image,
-    bio
-}`;
-
-// export async function getAuthor(){
-//   const author = await client.fetch(authorQuery);
-//   return author;
-//   console.log("author: ", author);
-// }
-
-export default function Post({ post }: { post: SanityDocument }) {
-  const { 
-    title, 
-    mainImage, 
-    body, 
-    description 
-  } = post;
-
-
-
+  console.log("POST inside BlogPost", post);
   return (
-    <main className="pb-28">
+    <main className="pt-10 pb-28">
       <div className="flex justify-center">
         <div className="h-full">
           <Image 
@@ -60,18 +36,22 @@ export default function Post({ post }: { post: SanityDocument }) {
       </div>
 
       <div className="flex items-center justify-center space-x-2">
-
-        {/* <Image 
-          className="rounded-full"
-          height={40}
-          width={40}
-          alt={post.author.name}
-          src={urlFor(post.author.image).url()}
-        /> */}
+        <div className="flex items-center justify-center py-2 px-4 border-2 rounded-full bg-black">
+          <Image 
+            className="rounded-full"
+            height={40}
+            width={40}
+            alt={post.author.name}
+            src={urlFor(post.author.image).url()}
+          />
+          <div className={poppins.className}>
+            <h3 className="text-md text-white pl-2">{post.author.name}</h3>
+          </div>
+        </div>
       </div>
-      <div className="">
+      <div className="pt-4">
         <div className={inconsolata.className}>
-          <div className="px-8 sm:px-[50px] pb-3">
+          <div className="px-8 sm:px-[96px] pb-3">
             <h4 className="text-[#f5c15d] text-center">{post.description}</h4>
           </div>
         </div>
@@ -83,15 +63,4 @@ export default function Post({ post }: { post: SanityDocument }) {
       </div>
     </main>
   );
-}
-
-// export async function getServerSideProps() {
-//   const author = await getAuthor();
-
-
-//   return {
-//     props: {
-//       author
-//     }
-//   }
-// }
+};
