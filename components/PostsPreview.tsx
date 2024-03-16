@@ -1,7 +1,5 @@
-"use client"
-import { POSTS_QUERY } from "@/sanity/lib/queries";
+'use client'
 import { QueryResponseInitial, useQuery } from "@sanity/react-loader";
-import { SanityDocument } from "next-sanity";
 import { groq } from "next-sanity";
 import BlogPosts from "./BlogPosts";
 

@@ -1,12 +1,12 @@
 'use client'
 
-import { SanityDocument } from 'next-sanity';
 import Link from 'next/link';
 import { ArrowUpRightIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import urlFor from "@/sanity/lib/urlFor";
 import { useEffect, useState } from 'react';
 import { Poppins, Inconsolata } from 'next/font/google';
+import ClientSideRoute from './ClientSideRoute';
 
 const poppins = Poppins({ weight: "400", subsets: ['latin'] })
 const inconsolataBold = Inconsolata({ weight: "800", subsets: ['latin'] })
@@ -54,21 +54,21 @@ function BlogPosts({ posts }: Props) {
           <Image 
             src={isSmallScreen ? stellaFlexHeroMobile : stellaFlexHero}
             alt="Stella Flex Hero Image"
-            layout='responsive'
             className='w-full object-cover object-center'
           />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 px-10 gap-10 gap-y-16 pb-24 pt-[50px]">
             {posts?.length > 0 ? (
                 posts.map((post) => (
-                    <Link href={post.slug.current} key={post._id}>
+                  <ClientSideRoute route={`/${post.slug.current}`} key={post._id}>
                     <div className="flex flex-col group cursor-pointer">
                       <div className="relative w-full h-80 drop-shadow-xl group-hover:scale-105 transition-transform duration-200 ease-out">
                         <Image
                           src={urlFor(post.mainImage).url()}
                           alt="Main Image of Post"
-                          fill
-                          className="object-cover"
+                          width={1000}
+                          height={800}
+                          className="object-cover w-full h-full"
                         />
                         <div className="absolute bottom-0 w-full bg-opacity-20 bg-black backdrop-blur-lg rounded drop-shadow-lg text-[#f2f5f7] p-5 flex justify-between">
                           <div className={poppins.className}>
@@ -107,7 +107,7 @@ function BlogPosts({ posts }: Props) {
                         </p>
                       </div>
                     </div>
-                    </Link>
+                    </ClientSideRoute>
                 ))
             ):
             (

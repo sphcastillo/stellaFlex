@@ -11,9 +11,8 @@ const inconsolataBold = Inconsolata({ weight: "800", subsets: ['latin'] })
 const inconsolata = Inconsolata({ weight: "400", subsets: ['latin'] })
 
 
-export default async function BlogPost( { post }: { post : any}) {
+export default async function BlogPost( { post }: { post : any }) {
 
-  console.log("POST inside BlogPost", post);
   return (
     <main className="pt-10 pb-28">
       <div className="flex justify-center">

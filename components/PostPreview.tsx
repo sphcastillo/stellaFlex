@@ -1,29 +1,42 @@
-// ./components/PostPreview.tsx
-
-"use client";
-
-import { POST_QUERY } from "@/sanity/lib/queries";
+'use client'
 import { QueryResponseInitial, useQuery } from "@sanity/react-loader";
-import { QueryParams, SanityDocument } from "next-sanity";
-
+import { QueryParams } from "next-sanity";
+import { groq } from "next-sanity";
 import BlogPost from "./BlogPost";
 
-export default function PostPreview({
-  initial,
+
+function PostPreview({
+  perspective,
   params
 }: {
-  initial: QueryResponseInitial<SanityDocument>;
+  perspective: "previewDrafts" | "published";
   params: QueryParams
 }) {
-  const { data } = useQuery<SanityDocument | null>(
-    POST_QUERY,
-    params,
-    { initial }
+
+  const query = groq`*[_type=='post' && slug.current == $slug][0] {
+    ...,
+    author->,
+    categories[]->
+  }`;
+
+  const { slug } = params;
+  const { data, error } = useQuery<Post | null>(
+    query,
+    { slug },
+    { initial: { perspective } as QueryResponseInitial<Post | null> }
   );
+
+  if (error) {
+    const errorMessage = (error as { message: string }).message;
+
+    return <div className="bg-red-100">ERROR: {errorMessage}</div>;
+  }
 
   return data ? (
     <BlogPost post={data} />
   ) : (
-    <div className="bg-red-100">Post not found</div>
+    <div className="bg-red-100">Unfortunately, this post cannot be found</div>
   );
 }
+
+export default PostPreview;
