@@ -14,14 +14,12 @@ export async function generateStaticParams() {
     slug: post?.slug?.current
 
   }))
-
 };
 
 
 export default async function Page({ params } : { params: QueryParams }) {
 
   const { slug } = params;
-
 
   const query = groq`*[_type=='post' && slug.current == $slug][0] {
     ...,
@@ -36,7 +34,7 @@ export default async function Page({ params } : { params: QueryParams }) {
   
   return perspective === "previewDrafts" ? (
 
-    <PostPreview perspective={perspective} params={params} />
+    <PostPreview post={post} />
   ) : (
     <BlogPost post={post} />
   );

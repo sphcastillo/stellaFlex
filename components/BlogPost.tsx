@@ -1,9 +1,6 @@
 import Image from "next/image"
 import { PortableText } from "@portabletext/react";
 import urlFor from "@/sanity/lib/urlFor";
-
-import { groq } from "next-sanity";
-import { client } from "@/sanity/lib/sanity.client";
 import { Poppins, Inconsolata } from 'next/font/google';
 
 const poppins = Poppins({ weight: "400", subsets: ['latin'] })
@@ -11,7 +8,7 @@ const inconsolataBold = Inconsolata({ weight: "800", subsets: ['latin'] })
 const inconsolata = Inconsolata({ weight: "400", subsets: ['latin'] })
 
 
-export default async function BlogPost( { post }: { post : any}) {
+export default async function BlogPost( { post }: { post : any }) {
 
   return (
     <main className="pt-10 pb-28">
