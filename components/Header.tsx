@@ -5,6 +5,7 @@ import Logo from '@/images/stellaFlexLogo.png';
 import { MdAccountCircle } from "react-icons/md";
 import { IoIosFitness } from "react-icons/io";
 import { Poppins } from 'next/font/google';
+import { MdOutlineFoodBank } from "react-icons/md";
 
 const poppins = Poppins({ weight: "400", subsets: ['latin'] })
 
@@ -27,15 +28,20 @@ function Header() {
             <div className='flex items-center justify-end space-x-6 pr-2 sm:pr-0'>
             
             <div className='flex items-center bg-black rounded-full justify-center px-3 py-1'>
+                <MdOutlineFoodBank className="h-7 w-7 cursor-pointer text-white" />
+                <div className={poppins.className}>
+                <p className='text-white pl-1 tracking-wide '>Recipes</p>
+                </div>
+            </div>
+            <div className='flex items-center bg-black rounded-full justify-center px-3 py-1'>
                 <IoIosFitness className="h-7 w-7 cursor-pointer text-white" />
                 <div className={poppins.className}>
                 <p className='text-white pl-1 tracking-wide '>Workouts</p>
                 </div>
             </div>
 
-
-            <MdAccountCircle className="h-7 w-7 cursor-pointer" />
-            
+            {/* <MdAccountCircle className="h-7 w-7 cursor-pointer" />
+             */}
             </div>
             
 

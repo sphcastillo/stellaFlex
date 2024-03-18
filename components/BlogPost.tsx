@@ -11,7 +11,7 @@ const inconsolataBold = Inconsolata({ weight: "800", subsets: ['latin'] })
 const inconsolata = Inconsolata({ weight: "400", subsets: ['latin'] })
 
 
-export default async function BlogPost( { post }: { post : any }) {
+export default async function BlogPost( { post }: { post : any}) {
 
   return (
     <main className="pt-10 pb-28">
@@ -33,21 +33,22 @@ export default async function BlogPost( { post }: { post : any }) {
           </div>
         </div>
       </div>
-
+    {post?.author && (
       <div className="flex items-center justify-center space-x-2">
         <div className="flex items-center justify-center py-2 px-4 border-2 rounded-full bg-black">
           <Image 
             className="rounded-full"
             height={40}
             width={40}
-            alt={post.author.name}
-            src={urlFor(post.author.image).url()}
+            alt={post?.author?.name}
+            src={urlFor(post?.author?.image).url()}
           />
           <div className={poppins.className}>
-            <h3 className="text-md text-white pl-2">{post.author.name}</h3>
+            <h3 className="text-md text-white pl-2">{post?.author?.name}</h3>
           </div>
         </div>
       </div>
+    )}
       <div className="pt-4">
         <div className={inconsolata.className}>
           <div className="px-8 sm:px-[96px] pb-3">
