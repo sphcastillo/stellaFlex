@@ -25,7 +25,16 @@ export default async function Page({ params } : { params: QueryParams }) {
     ...,
     author->,
     categories[]->
-  }`;
+  ,
+  'comments' : *[
+    _type == "comment" && 
+    post._ref == ^._id &&
+    approved == true
+  ],
+  description,
+  mainImage,
+  slug,
+  body}`;
 
   const post: Post = await client.fetch(query, { slug });
 

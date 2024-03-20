@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 
 import LiveVisualEditing from "@/components/LiveVisualEditing";
 import { draftMode } from "next/headers";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Stella Flex: Where Passion and Fitness Collide",
@@ -17,10 +18,11 @@ export default function RootLayout({
 }>) {
   return (
     <html>
-      <body className="max-w-7xl mx-auto bg-[#f2f5f7]">
+      <body className="max-w-6xl mx-auto bg-[#f2f5f7]">
         <Header />
         {children}
         {draftMode().isEnabled && <LiveVisualEditing />}
+        <Footer />
       </body>
     </html>
   )
