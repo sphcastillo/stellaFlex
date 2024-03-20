@@ -1,7 +1,7 @@
 'use client'
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import axios from "axios";
+
 
 interface IFormInput {
     _id: string;
@@ -18,17 +18,7 @@ function CommentsForm({ post }: Props) {
     const [submitted, setSubmitted] = useState(false); 
     const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>(); 
 
-    // const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-    //     try {
-    //         await axios.post('/api/createComment', data);
-    //         console.log('Comment submitted successfully:', data);
-    //         setSubmitted(true);
-    //     } catch (error) {
-    //         console.error('Error submitting comment:', error);
-    //         setSubmitted(false);
-    //     }
-    
-    // }
+
 
     return (
         <div>
@@ -42,7 +32,6 @@ function CommentsForm({ post }: Props) {
             </div>
             ) : (
             <form 
-                onSubmit={handleSubmit(onSubmit)} 
                 className="flex flex-col p-5 max-w-2xl mx-auto mb-10">
             <h3 className="text-sm text-yellow-500">Enjoyed this article?</h3>
             <h4 className="text-3xl font-bold">Leave a comment below!</h4>
