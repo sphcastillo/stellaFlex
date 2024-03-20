@@ -18,17 +18,17 @@ function CommentsForm({ post }: Props) {
     const [submitted, setSubmitted] = useState(false); 
     const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>(); 
 
-    const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-        try {
-            await axios.post('/api/createComment', data);
-            console.log('Comment submitted successfully:', data);
-            setSubmitted(true);
-        } catch (error) {
-            console.error('Error submitting comment:', error);
-            setSubmitted(false);
-        }
+    // const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+    //     try {
+    //         await axios.post('/api/createComment', data);
+    //         console.log('Comment submitted successfully:', data);
+    //         setSubmitted(true);
+    //     } catch (error) {
+    //         console.error('Error submitting comment:', error);
+    //         setSubmitted(false);
+    //     }
     
-    }
+    // }
 
     return (
         <div>
