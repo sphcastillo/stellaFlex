@@ -1,8 +1,9 @@
 import Image from "next/image"
 import { PortableText } from "@portabletext/react";
-import urlFor from "@/sanity/lib/urlFor";
+
 import { Poppins, Inconsolata } from 'next/font/google';
 import CommentsForm from "./CommentsForm";
+import { urlFor } from "@/sanity/lib/image";
 
 
 const poppins = Poppins({ weight: "400", subsets: ['latin'] })

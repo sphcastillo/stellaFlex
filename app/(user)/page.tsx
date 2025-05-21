@@ -1,27 +1,29 @@
-import { draftMode } from "next/headers";
-import { loadQuery } from "@/sanity/lib/store";
 
-import { groq } from "next-sanity";
-import BlogPosts from "@/components/BlogPosts";
-import PostsPreview from "@/components/PostsPreview";
-
-const query = groq`*[_type=='post'] {
-  ...,
-  author->,
-  categories[]->
-} 
- | order(_createdAt desc)
-`;
-
-export default async function Home() {
-  const initial = await loadQuery<Post[]>(query, {}, {
-    perspective: draftMode().isEnabled ? "previewDrafts" : "published"
-  });
+import HeroBanner from "@/components/HeroBanner";
+import InformationPanel from "@/components/InformationPanel";
+import PostsList from "@/components/PostsList";
+import { getPosts } from "@/sanity/lib/post/getPosts";
 
 
-  return draftMode().isEnabled ? (
-    <PostsPreview initial={initial}  />
-  ) : (
-    <BlogPosts posts={initial.data}  />
-  )
+export default async function Home({
+  searchParams,
+} : {
+  searchParams: Promise<{ tier: string}>;
+}) {
+
+  const { tier } = await searchParams;
+  const posts = await getPosts(tier);
+
+  return (
+    <div className="">
+      <HeroBanner />
+
+      <div className="-mt-20">
+      <InformationPanel />
+      </div>
+      <hr />
+
+      <PostsList posts={posts} />
+    </div>
+  );
 }
