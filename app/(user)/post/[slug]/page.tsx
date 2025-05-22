@@ -7,7 +7,6 @@ import Badge from "@/components/Badge/Badge";
 import Link from "next/link";
 import { ArrowLeftIcon } from "lucide-react";
 import { getPost } from "@/sanity/lib/post/getPost";
-import type { Metadata, ResolvingMetadata } from "next";
 
 interface PageProps {
   params: { slug: string };
