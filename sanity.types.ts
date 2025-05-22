@@ -335,6 +335,84 @@ export type SanityImageMetadata = {
 
 export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Category | Message | Comment | Post | Author | Slug | SiteSettings | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
 export declare const internalGroqTypeReferenceTo: unique symbol;
+// Source: ./sanity/lib/post/getPost.ts
+// Variable: getPostQuery
+// Query: *[_type == "post" && _id == $id][0]{  ...,  "comments": *[_type == "comment" && post._ref == ^._id] | order(createdAt desc)}
+export type GetPostQueryResult = {
+  _id: string;
+  _type: "post";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  description?: string;
+  author?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "author";
+  };
+  publishedAt?: string;
+  tierAccess?: "elevateElite" | "powerPulse" | "startStrong";
+  mainImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  categories?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
+  body?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  comments: Array<{
+    _id: string;
+    _type: "comment";
+    _createdAt: string;
+    _updatedAt: string;
+    _rev: string;
+    post?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "post";
+    };
+    name?: string;
+    userImageUrl?: string;
+    email?: string;
+    comment?: string;
+    createdAt?: string;
+  }>;
+} | null;
+
 // Source: ./sanity/lib/post/getPosts.ts
 // Variable: getPostsQuery
 // Query: *[_type == "post"] | order(_createdAt desc) {    ...,    mainImage {      ...,      asset->    },    "comments": *[_type == "comment" && post._ref == ^._id] | order(createdAt desc)  }
@@ -589,6 +667,7 @@ export type SiteSettingsQueryResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
+    "*[_type == \"post\" && _id == $id][0]{\n  ...,\n  \"comments\": *[_type == \"comment\" && post._ref == ^._id] | order(createdAt desc)\n}": GetPostQueryResult;
     "*[_type == \"post\"] | order(_createdAt desc) {\n    ...,\n    mainImage {\n      ...,\n      asset->\n    },\n    \"comments\": *[_type == \"comment\" && post._ref == ^._id] | order(createdAt desc)\n  }": GetPostsQueryResult;
     "*[_type == \"post\" && tierAccess == $tier] | order(_createdAt desc) {\n    ...,\n    mainImage {\n      ...,\n      asset->\n    },\n    \"comments\": *[_type == \"comment\" && post._ref == ^._id] | order(createdAt desc)\n  }": GetPostsQueryWithTierResult;
     "*[_type == \"siteSettings\"][0]{\n    ...,\n    mainHeroImage {\n        ...,\n        asset->{\n        _id,\n        url,\n        }\n    }\n    }": SiteSettingsQueryResult;
