@@ -337,7 +337,7 @@ export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/post/getPost.ts
 // Variable: getPostQuery
-// Query: *[_type == "post" && _id == $id][0]{  ...,  "comments": *[_type == "comment" && post._ref == ^._id] | order(createdAt desc)}
+// Query: *[_type == "post" && slug.current == $slug][0]{  ...,  "comments": *[_type == "comment" && post._ref == ^._id] | order(createdAt desc)}
 export type GetPostQueryResult = {
   _id: string;
   _type: "post";
@@ -667,7 +667,7 @@ export type SiteSettingsQueryResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"post\" && _id == $id][0]{\n  ...,\n  \"comments\": *[_type == \"comment\" && post._ref == ^._id] | order(createdAt desc)\n}": GetPostQueryResult;
+    "*[_type == \"post\" && slug.current == $slug][0]{\n  ...,\n  \"comments\": *[_type == \"comment\" && post._ref == ^._id] | order(createdAt desc)\n}": GetPostQueryResult;
     "*[_type == \"post\"] | order(_createdAt desc) {\n    ...,\n    mainImage {\n      ...,\n      asset->\n    },\n    \"comments\": *[_type == \"comment\" && post._ref == ^._id] | order(createdAt desc)\n  }": GetPostsQueryResult;
     "*[_type == \"post\" && tierAccess == $tier] | order(_createdAt desc) {\n    ...,\n    mainImage {\n      ...,\n      asset->\n    },\n    \"comments\": *[_type == \"comment\" && post._ref == ^._id] | order(createdAt desc)\n  }": GetPostsQueryWithTierResult;
     "*[_type == \"siteSettings\"][0]{\n    ...,\n    mainHeroImage {\n        ...,\n        asset->{\n        _id,\n        url,\n        }\n    }\n    }": SiteSettingsQueryResult;

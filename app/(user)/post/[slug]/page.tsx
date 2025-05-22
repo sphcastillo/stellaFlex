@@ -7,9 +7,13 @@ import Badge from "@/components/Badge/Badge";
 import Link from "next/link";
 import { ArrowLeftIcon } from "lucide-react";
 import { getPost } from "@/sanity/lib/post/getPost";
+import type { Metadata, ResolvingMetadata } from "next";
 
+interface PageProps {
+  params: { slug: string };
+}
 
-async function PostPage({ params }: { params: { slug: string } }) {
+async function PostPage({ params }: PageProps) {
   const { slug } = params;
 
   const post = await getPost(slug);
