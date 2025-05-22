@@ -10,7 +10,6 @@ export async function getTemporaryAccessToken() {
     const user = await currentUser();
 
     if(!user){
-        console.log("No user found, returning null");
         return null;
     }
 
@@ -19,10 +18,6 @@ export async function getTemporaryAccessToken() {
         lookup: { id: user.id },
     });
 
-    console.log("Token response received: ", 
-        response.data ? "Token received" : "No token is response"
-
-    );
 
     return response.data.token;
 }

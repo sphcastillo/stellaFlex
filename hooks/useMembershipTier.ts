@@ -31,7 +31,6 @@ function useMembershipTier() : MembershipLevel | null {
     // Listen for plan-changed events
     const handlePlanChanged = (event: PlanChangedEvent) => {
         // Handle the plan change event
-        console.log("Plan changed: ", event.detail);
 
         // You can update UI, refresh data, or trigger other actions here
         // For example, you might want to refetch user entitlements

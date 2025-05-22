@@ -15,11 +15,14 @@ async function getPost(slug: string) {
   return client.fetch<GetPostsQueryResult[number]>(query, { slug });
 }
 
-export default async function PostPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
+type Props = {
+  params: {
+    slug: string;
+  };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export default async function PostPage({ params }: Props) {
   const post = await getPost(params.slug);
 
   if (!post) {

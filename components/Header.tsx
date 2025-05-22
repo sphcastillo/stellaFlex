@@ -12,7 +12,7 @@ import CurrentTierBadge from "./Badge/CurrentTierBadge";
 
 async function Header() {
   const siteSettings = await getSiteSettings();
-  console.log(siteSettings);
+
   return (
     <header className="">
       <div className="flex items-center justify-between p-4 border-b border-gray-200">

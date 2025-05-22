@@ -17,7 +17,6 @@ import useMembershipTier from "@/hooks/useMembershipTier";
 import LockedPost from "./LockedPost";
 
 function Post({ post }: { post: GetPostsQueryResult[number] }) {
-  console.log("🔍 Post data:", post.mainImage?.asset);
   const membershipTier = useMembershipTier();
   const { user } = useUser();
 
