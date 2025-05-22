@@ -8,14 +8,15 @@ import Link from "next/link";
 import { ArrowLeftIcon } from "lucide-react";
 import { getPost } from "@/sanity/lib/post/getPost";
 
-interface PageProps {
-  params: { slug: string };
-}
-
-async function PostPage({ params }: PageProps) {
-  const { slug } = params;
+export default async function PostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
 
   const post = await getPost(slug);
+
   if (!post) return notFound();
 
   return (
@@ -88,5 +89,3 @@ async function PostPage({ params }: PageProps) {
     </main>
   );
 }
-
-export default PostPage;

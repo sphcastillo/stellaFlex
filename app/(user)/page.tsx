@@ -3,6 +3,7 @@ import HeroBanner from "@/components/HeroBanner";
 import InformationPanel from "@/components/InformationPanel";
 import PostsList from "@/components/PostsList";
 import { getPosts } from "@/sanity/lib/post/getPosts";
+import post from "@/sanity/schemaTypes/post";
 
 
 export default async function Home({
@@ -13,6 +14,7 @@ export default async function Home({
 
   const { tier } = await searchParams;
   const posts = await getPosts(tier);
+
 
   return (
     <div className="">
