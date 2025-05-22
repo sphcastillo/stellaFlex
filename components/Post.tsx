@@ -10,7 +10,6 @@ import { MessageCircleIcon } from "lucide-react";
 import TimeAgo from "react-timeago";
 import { useUser } from "@clerk/nextjs";
 import {
-  SubscriptionTierAccess,
   tierMap,
   normalizeTierAccess,
 } from "@/types/types";

@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import { HeartIcon } from "lucide-react";
 import Image from "next/image";
-import { MdAccountCircle } from "react-icons/md";
 import { IoIosFitness } from "react-icons/io";
 import { poppinsRegular } from "@/utils/fonts";
 import { MdOutlineFoodBank } from "react-icons/md";
