@@ -8,7 +8,12 @@ import Link from "next/link";
 import { ArrowLeftIcon } from "lucide-react";
 import { getPost } from "@/sanity/lib/post/getPost";
 
-async function PostPage({ params }: { params: { slug: string } }) {
+type Props = {
+  params: { slug: string }
+  searchParams: { [key: string]: string | string[] | undefined }
+}
+
+async function PostPage({ params }: Props) {
   const { slug } = params;
 
   const post = await getPost(slug);
