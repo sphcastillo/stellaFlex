@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@plugin "@tailwindcss/typography";
 
 @layer base {
   :root {
@@ -64,5 +65,304 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Add this to your global.css file */
+
+/* Animated gradient background */
+.bg-gradient-animated {
+  background: linear-gradient(45deg, #384f77, #7bc5ec, #4c7d9f, #4093b4, #4facfe, #00f2fe);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  opacity: 0.4;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Enhanced floating shapes */
+.floating-shape {
+  position: absolute;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  animation: morphFloat 12s infinite ease-in-out;
+  filter: blur(1px);
+  opacity: 0.6;
+}
+
+.shape-1 {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  left: 5%;
+  top: 20%;
+  animation-duration: 18s;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+  left: 85%;
+  top: 10%;
+  animation-duration: 22s;
+  animation-delay: -3s;
+}
+
+.shape-3 {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  left: 15%;
+  top: 70%;
+  animation-duration: 16s;
+  animation-delay: -8s;
+}
+
+.shape-4 {
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(180deg, #43e97b, #38f9d7);
+  left: 75%;
+  top: 60%;
+  animation-duration: 20s;
+  animation-delay: -5s;
+}
+
+.shape-5 {
+  width: 110px;
+  height: 110px;
+  background: linear-gradient(225deg, #fa709a, #fee140);
+  left: 45%;
+  top: 15%;
+  animation-duration: 24s;
+  animation-delay: -12s;
+}
+
+.shape-6 {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(315deg, #a8edea, #fed6e3);
+  left: 60%;
+  top: 80%;
+  animation-duration: 14s;
+  animation-delay: -2s;
+}
+
+.shape-7 {
+  width: 95px;
+  height: 95px;
+  background: linear-gradient(60deg, #ffecd2, #fcb69f);
+  left: 25%;
+  top: 45%;
+  animation-duration: 19s;
+  animation-delay: -10s;
+}
+
+.shape-8 {
+  width: 85px;
+  height: 85px;
+  background: linear-gradient(120deg, #a18cd1, #fbc2eb);
+  left: 80%;
+  top: 35%;
+  animation-duration: 17s;
+  animation-delay: -6s;
+}
+
+@keyframes morphFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  }
+  25% {
+    transform: translateY(-20px) rotate(90deg) scale(1.1);
+    border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
+  }
+  50% {
+    transform: translateY(-40px) rotate(180deg) scale(0.9);
+    border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+  }
+  75% {
+    transform: translateY(-20px) rotate(270deg) scale(1.05);
+    border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
+  }
+}
+
+/* Glowing orbs */
+.floating-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px);
+  opacity: 0.4;
+  animation: orbPulse 8s infinite ease-in-out;
+}
+
+.orb-1 {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(102, 126, 234, 0.8), rgba(102, 126, 234, 0.1));
+  left: 10%;
+  top: 30%;
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(240, 147, 251, 0.8), rgba(240, 147, 251, 0.1));
+  right: 20%;
+  top: 20%;
+  animation-delay: -2s;
+}
+
+.orb-3 {
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(79, 172, 254, 0.8), rgba(79, 172, 254, 0.1));
+  left: 60%;
+  bottom: 25%;
+  animation-delay: -4s;
+}
+
+.orb-4 {
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(245, 87, 108, 0.8), rgba(245, 87, 108, 0.1));
+  left: 20%;
+  bottom: 40%;
+  animation-delay: -6s;
+}
+
+.orb-5 {
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, rgba(0, 242, 254, 0.8), rgba(0, 242, 254, 0.1));
+  right: 15%;
+  bottom: 30%;
+  animation-delay: -3s;
+}
+
+@keyframes orbPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.6;
+  }
+}
+
+/* Particle system */
+.particle-system {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  animation: particleFloat 25s infinite linear;
+  opacity: 0.8;
+}
+
+.particle-1 { left: 10%; animation-delay: 0s; animation-duration: 20s; }
+.particle-2 { left: 20%; animation-delay: -2s; animation-duration: 25s; }
+.particle-3 { left: 30%; animation-delay: -4s; animation-duration: 18s; }
+.particle-4 { left: 40%; animation-delay: -6s; animation-duration: 22s; }
+.particle-5 { left: 50%; animation-delay: -8s; animation-duration: 24s; }
+.particle-6 { left: 60%; animation-delay: -10s; animation-duration: 19s; }
+.particle-7 { left: 70%; animation-delay: -12s; animation-duration: 21s; }
+.particle-8 { left: 80%; animation-delay: -14s; animation-duration: 23s; }
+.particle-9 { left: 90%; animation-delay: -16s; animation-duration: 20s; }
+.particle-10 { left: 15%; animation-delay: -18s; animation-duration: 26s; }
+.particle-11 { left: 25%; animation-delay: -20s; animation-duration: 17s; }
+.particle-12 { left: 35%; animation-delay: -22s; animation-duration: 24s; }
+.particle-13 { left: 45%; animation-delay: -24s; animation-duration: 19s; }
+.particle-14 { left: 55%; animation-delay: -26s; animation-duration: 22s; }
+.particle-15 { left: 65%; animation-delay: -28s; animation-duration: 21s; }
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(100vh) translateX(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-100px) translateX(50px);
+    opacity: 0;
+  }
+}
+
+/* Enhanced sparkles */
+.enhanced-sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, #fff, #667eea);
+  border-radius: 50%;
+  animation: enhancedSparkle 3s infinite ease-in-out;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@keyframes enhancedSparkle {
+  0%, 100% { 
+    opacity: 0; 
+    transform: scale(0) rotate(0deg); 
+  }
+  50% { 
+    opacity: 1; 
+    transform: scale(1.5) rotate(180deg); 
+  }
+}
+
+/* Mesh gradient overlay */
+.mesh-gradient {
+  background: 
+    radial-gradient(at 40% 20%, hsla(228,100%,74%,0.1) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, hsla(189,100%,56%,0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, hsla(355,100%,93%,0.1) 0px, transparent 50%),
+    radial-gradient(at 80% 50%, hsla(340,100%,76%,0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(22,100%,77%,0.1) 0px, transparent 50%),
+    radial-gradient(at 80% 100%, hsla(242,100%,70%,0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 0%, hsla(343,100%,76%,0.1) 0px, transparent 50%);
+  animation: meshMove 20s ease infinite;
+}
+
+@keyframes meshMove {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.5; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .floating-shape {
+    opacity: 0.4;
+  }
+  
+  .floating-orb {
+    opacity: 0.2;
+  }
+  
+  .particle {
+    opacity: 0.4;
+  }
+  
+  .bg-gradient-animated {
+    opacity: 0.2;
   }
 }

@@ -1,11 +1,12 @@
+'use client'
 import { GetPostsQueryResult } from "@/sanity.types";
 import { urlFor } from "@/sanity/lib/image";
 import { Lock, MessageCircleIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import CreatedAt from "./CreatedAt";
-import TierBadge from "./Badge/TierBadge";
 import { normalizeTierAccess } from "@/types/types";
+import TierBadge from "../Badge/TierBadge";
+import CreatedAt from "../CreatedAt";
 
 function LockedPost({ post }: { post: GetPostsQueryResult[number] }) {
   const safeTier = post.tierAccess
@@ -24,8 +25,10 @@ function LockedPost({ post }: { post: GetPostsQueryResult[number] }) {
             <Image
               src={urlFor(post.mainImage).url()}
               alt={post.mainImage.alt || post.title || "Post cover image"}
-              fill
-              className="object-contain blur-sm"
+              className="absolute inset-0 w-full h-full object-contain blur-sm"
+              width={1280}
+              height={720}
+              priority
             />
           </div>
         )}

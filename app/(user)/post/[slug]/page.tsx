@@ -7,6 +7,7 @@ import Badge from "@/components/Badge/Badge";
 import Link from "next/link";
 import { ArrowLeftIcon } from "lucide-react";
 import { getPost } from "@/sanity/lib/post/getPost";
+import Comments from "@/components/Comments";
 
 export default async function PostPage({
   params,
@@ -28,8 +29,9 @@ export default async function PostPage({
             <Image
               src={urlFor(post.mainImage).url()}
               alt={post.mainImage?.alt || post.title || "Post cover image"}
-              fill
-              className="object-cover blur-md scale-105 brightness-90"
+              width={1920}
+              height={1080}
+              className="absolute inset-0 w-full h-full object-cover blur-md scale-105 brightness-90"
               priority
             />
           </div>
@@ -40,8 +42,9 @@ export default async function PostPage({
               <Image
                 src={urlFor(post.mainImage).url()}
                 alt={post.mainImage?.alt || post.title || "Post cover image"}
-                fill
-                className="object-contain"
+                width={1200}
+                height={800}
+                className="absolute inset-0 w-full h-full object-contain"
                 priority
               />
             </div>
@@ -84,7 +87,7 @@ export default async function PostPage({
       <hr />
 
       <div className="max-w-3xl mx-auto px-4 py-12">
-        {/* <Comments post={post} /> */}
+        <Comments post={post} />
       </div>
     </main>
   );

@@ -1,3 +1,7 @@
+// custom React hook that integrates w/ SchematicsHQ's feature flag system
+// returns a user’s current membership level (as a MembershipLevel type: 1, 2, or 3) 
+// based on which feature flags they have access to 
+//  listens for subscription plan changes to refresh the UI when needed
 'use client'
 
 import { useSchematicFlag } from "@schematichq/schematic-react";
@@ -18,23 +22,27 @@ interface PlanChangedEvent extends CustomEvent {
     detail: PlanChangeDetail;
 }
 
-
 function useMembershipTier() : MembershipLevel | null {
   const router = useRouter();
 
   
   const hasStartStrongContent = useSchematicFlag('start-strong-content');
+  console.log("has Started Strong? ", hasStartStrongContent)
   const hasPowerPulseContent = useSchematicFlag('power-pulse-content');
+  console.log("has Power Pulse? ", hasPowerPulseContent)
   const hasElevateEliteContent = useSchematicFlag('elevate-elite-content');
+  console.log("has Elevate Elite? ", hasElevateEliteContent)
 
+  // Separate useEffect for plan-changed event listener
   useEffect(() => {
     // Listen for plan-changed events
     const handlePlanChanged = (event: PlanChangedEvent) => {
         // Handle the plan change event
+        console.log("Plan changed: ", event.detail);
 
         // You can update UI, refresh data, or trigger other actions here
         // For example, you might want to refetch user entitlements
-        router.refresh();
+        window.location.reload(); 
     };
 
     window.addEventListener('plan-changed', handlePlanChanged as EventListener);
@@ -46,7 +54,7 @@ function useMembershipTier() : MembershipLevel | null {
         );
     };
 
-  }, [router ]); // Empty dependency array as this only needs to be set up once
+  }, []); // Empty dependency array as this only needs to be set up once
 
   if(hasElevateEliteContent) return 3;
   if(hasPowerPulseContent) return 2;

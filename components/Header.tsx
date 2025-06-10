@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import { HeartIcon } from "lucide-react";
 import Image from "next/image";
-import { IoIosFitness } from "react-icons/io";
+import { IoIosFitness, IoMdPricetag } from "react-icons/io";
 import { poppinsRegular } from "@/utils/fonts";
 import { MdOutlineFoodBank } from "react-icons/md";
 import { getSiteSettings } from "@/sanity/lib/siteSettings/getSiteSettings";
@@ -34,6 +34,18 @@ async function Header() {
         </Link>
 
         <div className="flex items-center justify-between space-x-6 pr-2 sm:pr-0">
+          <Link href="/pricing">
+            {" "}
+            <div className="flex items-center bg-black rounded-full justify-center px-3 py-1">
+              <IoMdPricetag className="h-7 w-7 cursor-pointer text-white" />
+              <div className={poppinsRegular.className}>
+                <p className="text-white pl-1 text-sm tracking-wide ">
+                  Pricing
+                </p>
+              </div>
+            </div>
+          </Link>
+
           <div className="flex items-center bg-black rounded-full justify-center px-3 py-1">
             <MdOutlineFoodBank className="h-7 w-7 cursor-pointer text-white" />
             <div className="">

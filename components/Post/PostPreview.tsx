@@ -1,17 +1,35 @@
-'use client'
+"use client";
 import { GetPostsQueryResult } from "@/sanity.types";
 import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
+import useMembershipTier from "@/hooks/useMembershipTier";
+import { tierMap, normalizeTierAccess } from "@/types/types";
+import LockedPost from "@/components/Post/LockedPost";
+import fallbackImage from "@/images/fallbackimage-stellaflex.jpg";
 
-function PostIntro({ post }: { post: GetPostsQueryResult[number] }) {
+function PostPreview({ post }: { post: GetPostsQueryResult[number] }) {
   const [showDescription, setShowDescription] = useState(false);
   const router = useRouter();
-  
-  const imageUrl = post.mainImage?.asset ? urlFor(post.mainImage).url() : null;
-  
+  const membershipTier = useMembershipTier();
+
+  const safeTier = post.tierAccess
+    ? normalizeTierAccess(post.tierAccess)
+    : undefined;
+  if (!safeTier) {
+    console.warn("Invalid tierAccess:", post.tierAccess);
+    return null;
+  }
+
+  const postMembershipLevel = tierMap[safeTier];
+  const isLocked = !membershipTier || membershipTier < postMembershipLevel;
+
+  if (isLocked) return <LockedPost post={post} />;
+
+  const imageUrl = post.mainImage?.asset ? urlFor(post.mainImage).url() : fallbackImage;
+
   if (!imageUrl) {
     console.warn("No image URL available for post:", post._id);
     return null;
@@ -32,8 +50,8 @@ function PostIntro({ post }: { post: GetPostsQueryResult[number] }) {
       transition={{ duration: 0.5 }}
       className="w-full"
     >
-      <motion.div 
-        className="relative w-full h-[300px] overflow-hidden rounded-lg group cursor-pointer"
+      <motion.div
+        className="relative w-full overflow-hidden rounded-lg group cursor-pointer"
         whileHover={{ scale: 1.02 }}
         transition={{ type: "spring", stiffness: 300 }}
         onClick={handleCardClick}
@@ -42,16 +60,16 @@ function PostIntro({ post }: { post: GetPostsQueryResult[number] }) {
           src={imageUrl}
           alt={post.mainImage?.alt || post.title || "Post image"}
           width={600}
-          height={300}
-          className="w-full h-full object-cover rounded-lg"
+          height={900}
+          className="w-full h-[400px] object-cover rounded-lg"
         />
-        <motion.div 
+        <motion.div
           className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
           initial={{ opacity: 0.8 }}
           whileHover={{ opacity: 1 }}
         >
           <div className="absolute bottom-0 left-0 right-0 p-6">
-            <motion.h2 
+            <motion.h2
               className="text-2xl font-bold text-white mb-2"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -60,7 +78,7 @@ function PostIntro({ post }: { post: GetPostsQueryResult[number] }) {
               {post.title}
             </motion.h2>
             {post.description && (
-              <motion.div 
+              <motion.div
                 className="text-gray-200 text-sm"
                 onClick={(e) => {
                   e.stopPropagation();
@@ -101,4 +119,4 @@ function PostIntro({ post }: { post: GetPostsQueryResult[number] }) {
   );
 }
 
-export default PostIntro;
+export default PostPreview;

@@ -1,10 +1,10 @@
-import { membershipMap, SubscriptionTierAccess, tierMap } from "@/types/types";
+import { membershipMap, TierAccess, tierMap } from "@/types/types";
 import { getBadgeColor, getBadgeIcon } from "./lib/utils";
 import Link from "next/link";
 
 interface BadgeProps {
   variant?: "simple" | "interactive";
-  tier: SubscriptionTierAccess;
+  tier: TierAccess;
   link?: string;
   className?: string;
 }

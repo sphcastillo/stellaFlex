@@ -1,8 +1,8 @@
-import { SubscriptionTierAccess } from "@/types/types";
+import { TierAccess } from "@/types/types";
 import Badge from "./Badge";
 
 interface TierBadgeProps {
-  tierAccess: SubscriptionTierAccess;
+  tierAccess: TierAccess;
 }
 
 function TierBadge({ tierAccess }: TierBadgeProps) {

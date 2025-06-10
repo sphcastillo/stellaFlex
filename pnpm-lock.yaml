@@ -42,8 +42,8 @@ importers:
         specifier: '3'
         version: 3.88.3(@babel/runtime@7.27.1)(@codemirror/lint@6.8.5)(@codemirror/theme-one-dark@6.1.2)(@emotion/is-prop-valid@1.2.2)(codemirror@6.0.1)(react-dom@19.1.0(react@19.1.0))(react-is@18.3.1)(react@19.1.0)(styled-components@6.1.18(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
       '@schematichq/schematic-components':
-        specifier: ^0.7.13
-        version: 0.7.14(@stripe/react-stripe-js@3.7.0(@stripe/stripe-js@7.3.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)
+        specifier: 0.7.16
+        version: 0.7.16(@stripe/react-stripe-js@3.7.0(@stripe/stripe-js@7.3.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)
       '@schematichq/schematic-react':
         specifier: ^1.2.4
         version: 1.2.4(react@19.1.0)
@@ -2293,8 +2293,8 @@ packages:
       svelte:
         optional: true
 
-  '@schematichq/schematic-components@0.7.14':
-    resolution: {integrity: sha512-4XRFO3Xhf9UznS3MOSqvf7PDyAuh9cBx5K0jwZ6V3wat4Q2n4JgCoTa9WPRT32Jwo6f6S++hMLD/pH8rZNpnhw==}
+  '@schematichq/schematic-components@0.7.16':
+    resolution: {integrity: sha512-37OAhaTkQBZaAIioNh8xW8CIuc2CRQyO0FViXBW8QK5oiKWBdmVt05f4lnX4llwUMOGKsUMer1S/ACMDhYUroQ==}
     peerDependencies:
       '@stripe/react-stripe-js': '>=3'
       react: '>=18'
@@ -4067,8 +4067,8 @@ packages:
   i18next@23.16.8:
     resolution: {integrity: sha512-06r/TitrM88Mg5FdUXAKL96dJMzgqLE5dv3ryBAra4KCwD9mJ4ndOTS95ZuymIGoE+2hzfdaMak2X11/es7ZWg==}
 
-  i18next@25.2.0:
-    resolution: {integrity: sha512-ERhJICsxkw1vE7G0lhCUYv4ZxdBEs03qblt1myJs94rYRK9loJF3xDj8mgQz3LmCyp0yYrNjbN/1/GWZTZDGCA==}
+  i18next@25.2.1:
+    resolution: {integrity: sha512-+UoXK5wh+VlE1Zy5p6MjcvctHXAhRwQKCxiJD8noKZzIXmnAX8gdHX5fLPA3MEVxEN4vbZkQFy8N0LyD9tUqPw==}
     peerDependencies:
       typescript: ^5
     peerDependenciesMeta:
@@ -5343,8 +5343,8 @@ packages:
       react-native:
         optional: true
 
-  react-i18next@15.5.1:
-    resolution: {integrity: sha512-C8RZ7N7H0L+flitiX6ASjq9p5puVJU1Z8VyL3OgM/QOMRf40BMZX+5TkpxzZVcTmOLPX5zlti4InEX5pFyiVeA==}
+  react-i18next@15.5.2:
+    resolution: {integrity: sha512-ePODyXgmZQAOYTbZXQn5rRsSBu3Gszo69jxW6aKmlSgxKAI1fOhDwSu6bT4EKHciWPKQ7v7lPrjeiadR6Gi+1A==}
     peerDependencies:
       i18next: '>= 23.2.3'
       react: '>= 16.8.0'
@@ -8991,18 +8991,18 @@ snapshots:
       - debug
       - typescript
 
-  '@schematichq/schematic-components@0.7.14(@stripe/react-stripe-js@3.7.0(@stripe/stripe-js@7.3.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)':
+  '@schematichq/schematic-components@0.7.16(@stripe/react-stripe-js@3.7.0(@stripe/stripe-js@7.3.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)':
     dependencies:
       '@stripe/react-stripe-js': 3.7.0(@stripe/stripe-js@7.3.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@stripe/stripe-js': 7.3.0
       classnames: 2.5.1
-      i18next: 25.2.0(typescript@5.8.3)
+      i18next: 25.2.1(typescript@5.8.3)
       lodash: 4.17.21
       pako: 2.1.0
       pluralize: 8.0.0
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
-      react-i18next: 15.5.1(i18next@25.2.0(typescript@5.8.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)
+      react-i18next: 15.5.2(i18next@25.2.1(typescript@5.8.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)
       styled-components: 6.1.18(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       uuid: 11.1.0
     transitivePeerDependencies:
@@ -11018,7 +11018,7 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.27.1
 
-  i18next@25.2.0(typescript@5.8.3):
+  i18next@25.2.1(typescript@5.8.3):
     dependencies:
       '@babel/runtime': 7.27.1
     optionalDependencies:
@@ -12240,11 +12240,11 @@ snapshots:
     optionalDependencies:
       react-dom: 19.1.0(react@19.1.0)
 
-  react-i18next@15.5.1(i18next@25.2.0(typescript@5.8.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3):
+  react-i18next@15.5.2(i18next@25.2.1(typescript@5.8.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3):
     dependencies:
       '@babel/runtime': 7.27.1
       html-parse-stringify: 3.0.1
-      i18next: 25.2.0(typescript@5.8.3)
+      i18next: 25.2.1(typescript@5.8.3)
       react: 19.1.0
     optionalDependencies:
       react-dom: 19.1.0(react@19.1.0)

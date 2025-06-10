@@ -3,7 +3,6 @@ import { GetPostsQueryResult } from "@/sanity.types";
 import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
 import Link from "next/link";
-import Badge from "./Badge/Badge";
 import { PortableText } from "@portabletext/react";
 import type { PortableTextBlock } from "@portabletext/types";
 import { MessageCircleIcon } from "lucide-react";
@@ -15,6 +14,7 @@ import {
 } from "@/types/types";
 import useMembershipTier from "@/hooks/useMembershipTier";
 import LockedPost from "./LockedPost";
+import Badge from "../Badge/Badge";
 
 function Post({ post }: { post: GetPostsQueryResult[number] }) {
   const membershipTier = useMembershipTier();
@@ -77,6 +77,7 @@ function Post({ post }: { post: GetPostsQueryResult[number] }) {
             alt={post.mainImage.alt || post.title || "Post cover image"}
             width={800}
             height={450}
+            priority
             className="w-full h-full object-contain group-hover:scale-105 transition-all duration-300"
           />
         </div>

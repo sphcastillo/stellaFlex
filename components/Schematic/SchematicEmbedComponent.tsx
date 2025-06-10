@@ -13,4 +13,4 @@ function SchematicEmbedComponent({
     <SchematicEmbed accessToken={accessToken} id={componentId} />
   )
 }
-export default SchematicEmbedComponent
+export default SchematicEmbedComponent;

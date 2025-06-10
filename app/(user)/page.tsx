@@ -1,7 +1,7 @@
 
 import HeroBanner from "@/components/HeroBanner";
 import InformationPanel from "@/components/InformationPanel";
-import PostsList from "@/components/PostsList";
+import PostsList from "@/components/Post/PostsList";
 import { getPosts } from "@/sanity/lib/post/getPosts";
 import post from "@/sanity/schemaTypes/post";
 

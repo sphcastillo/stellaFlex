@@ -24,6 +24,7 @@ async function InformationPanel() {
           width={175}
           height={175}
           className="rounded-lg z-50"
+          priority
         />
       )}
 

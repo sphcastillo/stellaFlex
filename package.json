@@ -21,7 +21,7 @@
     "@sanity/client": "^7.2.2",
     "@sanity/image-url": "1",
     "@sanity/vision": "3",
-    "@schematichq/schematic-components": "^0.7.13",
+    "@schematichq/schematic-components": "0.7.16",
     "@schematichq/schematic-react": "^1.2.4",
     "@schematichq/schematic-typescript-node": "^1.1.10",
     "@stripe/react-stripe-js": "^3.6.0",

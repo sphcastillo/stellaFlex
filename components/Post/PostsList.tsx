@@ -1,8 +1,9 @@
 import { ClerkLoaded } from "@clerk/nextjs";
 import { GetPostsQueryResult } from "@/sanity.types";
 import { getSiteSettings } from "@/sanity/lib/siteSettings/getSiteSettings";
-import FilterByTierSelect from "./FilterByTierSelect";
+import FilterByTierSelect from "../FilterByTierSelect";
 import PostGrid from "./PostGrid";
+
 
 async function PostsList({ posts }: { posts: GetPostsQueryResult }) {
   const siteSettings = await getSiteSettings();
