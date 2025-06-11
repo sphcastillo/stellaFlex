@@ -46,7 +46,7 @@ function MemberButton() {
     return (
       <Link href="/pricing">
         <Button className="bg-green-500 text-white px-8 py-2 rounded-lg text-base font-semibold hover:bg-green-700 transition-colors">
-          Thanks for being a VIP!{" "}
+          Thanks for being a ElevateElite member!{" "}
           <Heart className="w-4 h-4 fill-white text-white" />
         </Button>
       </Link>

@@ -26,7 +26,7 @@ function DirectMessageButton() {
   const tier = membershipTier ? getTierFromLevel(membershipTier) : null;
 
   if (tier === 'elevateElite') {
-    // VIPs can DM the creator
+    // ElevateElite can DM Stella Jacobs
     return (
       <Button
         className="flex items-center gap-2 transition-all hover:bg-primary/90"
@@ -34,7 +34,7 @@ function DirectMessageButton() {
       >
         <Link href="/message">
           <MessageCircleIcon className="w-4 h-4" />
-          <span>Send Message to Creator</span>
+          <span>Send Message to Stella Jacobs</span>
         </Link>
       </Button>
     );
@@ -47,11 +47,11 @@ function DirectMessageButton() {
         <TooltipTrigger>
           <div className="flex bg-gray-100 px-4 py-2 rounded-md items-center gap-2 border-dashed cursor-not-allowed opacity-70">
             <LockIcon className="w-4 h-4" />
-            <span>Send Message to Creator</span>
+            <span>Send Message to Stella Jacobs</span>
           </div>
         </TooltipTrigger>
         <TooltipContent className="p-4">
-          <p className="text-sm mb-2">Upgrade to VIP to message the creator</p>
+          <p className="text-sm mb-2">Upgrade to ElevateElite to message Stella Jacobs</p>
           <Button
             size="sm"
             className="w-full text-xs"
