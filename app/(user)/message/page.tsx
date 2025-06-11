@@ -96,9 +96,9 @@ export default function MessagePage() {
   }
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] bg-gradient-to-t from-gray-50 to-white">
+    <div className="mt-12 min-h-[calc(100vh-4rem)] glass-interactive rounded-3xl mb-24">
       <div className="max-w-4xl mx-auto px-4 py-12">
-        <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+        <div className="my-12 bg-gradient-to-t from-gray-50 to-white rounded-3xl shadow-lg overflow-hidden">
           {/* Header */}
           <div className="p-6 sm:p-8 bg-gradient-to-r from-indigo-500 to-purple-600">
             <div className="flex items-center gap-3 text-white mb-2">

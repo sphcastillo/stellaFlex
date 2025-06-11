@@ -21,11 +21,11 @@ export default async function PostPage({
   if (!post) return notFound();
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen glass-light rounded-3xl mt-12 mb-24">
       {post.mainImage?.asset && (
-        <div className="relative h-[50vh] w-full bg-gray-100">
+        <div className="relative h-[50vh] w-full bg-gray-100 rounded-3xl">
           {/* Blurred background */}
-          <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 overflow-hidden rounded-3xl">
             <Image
               src={urlFor(post.mainImage).url()}
               alt={post.mainImage?.alt || post.title || "Post cover image"}

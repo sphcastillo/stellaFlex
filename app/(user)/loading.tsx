@@ -6,7 +6,7 @@ async function Loading() {
   const siteSettings = await getSiteSettings();
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-white">
+    <div className="fixed inset-0 flex items-center justify-center glass-light">
       {siteSettings?.headerLogo && (
         <div className="flex items-center justify-center">
           <Image
