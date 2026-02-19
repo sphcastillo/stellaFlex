@@ -37,7 +37,7 @@ export default function RootLayout({
         <OurSchematicProvider>
           <body className={`${geistSans.variable} ${geistMono.variable} antialiased max-w-7xl mx-auto`}>
             <AnimatedBackground />
-            <Header />
+            {/* <Header /> */}
             {children}
 
             <div className="fixed bottom-4 right-4">

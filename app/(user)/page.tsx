@@ -1,4 +1,5 @@
 
+import Centr from "@/components/Centr";
 import HeroBanner from "@/components/HeroBanner";
 import InformationPanel from "@/components/InformationPanel";
 import PostsList from "@/components/Post/PostsList";
@@ -18,11 +19,11 @@ export default async function Home({
 
   return (
     <div className="">
-      <HeroBanner />
-
-      <div className="-mt-20">
+      {/* <HeroBanner /> */}
+      <Centr />
+      {/* <div className="-mt-20">
       <InformationPanel />
-      </div>
+      </div> */}
       <hr />
 
       <PostsList posts={posts} />
